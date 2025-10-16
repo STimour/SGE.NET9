@@ -11,28 +11,6 @@
   <component name="ChangeListManager">
     <list default="true" id="3104b775-265e-4b03-84c3-9f5e734814c7" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.SGE/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.SGE/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SGE.Application/Class1.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SGE.Application/SGE.Application.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/SGE.Application/SGE.Application.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SGE.Application/obj/Debug/net9.0/SGE.Application.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SGE.Application/obj/Debug/net9.0/SGE.Application.AssemblyInfo.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SGE.Application/obj/Debug/net9.0/SGE.Application.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/SGE.Application/obj/Debug/net9.0/SGE.Application.AssemblyInfoInputs.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SGE.Application/obj/SGE.Application.csproj.nuget.dgspec.json" beforeDir="false" afterPath="$PROJECT_DIR$/SGE.Application/obj/SGE.Application.csproj.nuget.dgspec.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SGE.Application/obj/project.assets.json" beforeDir="false" afterPath="$PROJECT_DIR$/SGE.Application/obj/project.assets.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SGE.Application/obj/project.nuget.cache" beforeDir="false" afterPath="$PROJECT_DIR$/SGE.Application/obj/project.nuget.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SGE.Application/obj/project.packagespec.json" beforeDir="false" afterPath="$PROJECT_DIR$/SGE.Application/obj/project.packagespec.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SGE.Application/obj/rider.project.restore.info" beforeDir="false" afterPath="$PROJECT_DIR$/SGE.Application/obj/rider.project.restore.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SGE.Core/Class1.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SGE.Core/obj/Debug/net9.0/SGE.Core.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SGE.Core/obj/Debug/net9.0/SGE.Core.AssemblyInfo.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SGE.Core/obj/Debug/net9.0/SGE.Core.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/SGE.Core/obj/Debug/net9.0/SGE.Core.AssemblyInfoInputs.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SGE.Infrastructure/Class1.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SGE.Infrastructure/SGE.Infrastructure.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/SGE.Infrastructure/SGE.Infrastructure.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SGE.Infrastructure/obj/Debug/net9.0/SGE.Infrastructure.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SGE.Infrastructure/obj/Debug/net9.0/SGE.Infrastructure.AssemblyInfo.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SGE.Infrastructure/obj/Debug/net9.0/SGE.Infrastructure.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/SGE.Infrastructure/obj/Debug/net9.0/SGE.Infrastructure.AssemblyInfoInputs.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SGE.Infrastructure/obj/SGE.Infrastructure.csproj.nuget.dgspec.json" beforeDir="false" afterPath="$PROJECT_DIR$/SGE.Infrastructure/obj/SGE.Infrastructure.csproj.nuget.dgspec.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SGE.Infrastructure/obj/project.assets.json" beforeDir="false" afterPath="$PROJECT_DIR$/SGE.Infrastructure/obj/project.assets.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SGE.Infrastructure/obj/project.nuget.cache" beforeDir="false" afterPath="$PROJECT_DIR$/SGE.Infrastructure/obj/project.nuget.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SGE.Infrastructure/obj/project.packagespec.json" beforeDir="false" afterPath="$PROJECT_DIR$/SGE.Infrastructure/obj/project.packagespec.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SGE.Infrastructure/obj/rider.project.restore.info" beforeDir="false" afterPath="$PROJECT_DIR$/SGE.Infrastructure/obj/rider.project.restore.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SGE.sln" beforeDir="false" afterPath="$PROJECT_DIR$/SGE.sln" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,15 +21,21 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/SGE.API/Class1.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/SGE.Application/Class1.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/SGE.Core/Class1.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/SGE.Infrastructure/Class1.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/SGE.Core/Entities/Attendance.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/SGE.Core/Entities/BaseEntity.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/SGE.Core/Entities/Departement.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/SGE.Core/Entities/Employee.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/SGE.Core/Entities/LeaveRequest.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/SGE.Core/Entities/LeaveStatus.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/SGE.Core/Entities/LeaveType.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 1
 }</component>
   <component name="ProjectId" id="343YVBBz7ZUrNDY40qEe447U319" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -188,7 +172,7 @@
       <workItem from="1760443746904" duration="389000" />
       <workItem from="1760444344404" duration="4307000" />
       <workItem from="1760598120943" duration="3400000" />
-      <workItem from="1760602694111" duration="3602000" />
+      <workItem from="1760602694111" duration="6104000" />
     </task>
     <servers />
   </component>
