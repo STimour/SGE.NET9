@@ -6,4 +6,8 @@
         <Nullable>enable</Nullable>
     </PropertyGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\SGE.Core\SGE.Core.csproj" />
+    </ItemGroup>
+
 </Project>

@@ -1,11 +1,49 @@
 {
   "version": 3,
   "targets": {
-    "net9.0": {}
+    "net9.0": {
+      "SGE.Application/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v9.0",
+        "dependencies": {
+          "SGE.Core": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/SGE.Application.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/SGE.Application.dll": {}
+        }
+      },
+      "SGE.Core/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v9.0",
+        "compile": {
+          "bin/placeholder/SGE.Core.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/SGE.Core.dll": {}
+        }
+      }
+    }
   },
-  "libraries": {},
+  "libraries": {
+    "SGE.Application/1.0.0": {
+      "type": "project",
+      "path": "../SGE.Application/SGE.Application.csproj",
+      "msbuildProject": "../SGE.Application/SGE.Application.csproj"
+    },
+    "SGE.Core/1.0.0": {
+      "type": "project",
+      "path": "../SGE.Core/SGE.Core.csproj",
+      "msbuildProject": "../SGE.Core/SGE.Core.csproj"
+    }
+  },
   "projectFileDependencyGroups": {
-    "net9.0": []
+    "net9.0": [
+      "SGE.Application >= 1.0.0",
+      "SGE.Core >= 1.0.0"
+    ]
   },
   "packageFolders": {
     "/Users/tim/.nuget/packages/": {}
@@ -31,7 +69,14 @@
       "frameworks": {
         "net9.0": {
           "targetAlias": "net9.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "/Users/tim/M2cours/webService/SGE/SGE.Application/SGE.Application.csproj": {
+              "projectPath": "/Users/tim/M2cours/webService/SGE/SGE.Application/SGE.Application.csproj"
+            },
+            "/Users/tim/M2cours/webService/SGE/SGE.Core/SGE.Core.csproj": {
+              "projectPath": "/Users/tim/M2cours/webService/SGE/SGE.Core/SGE.Core.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

@@ -1,0 +1,56 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v9.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v9.0": {
+      "SGE.Infrastructure/1.0.0": {
+        "dependencies": {
+          "SGE.Application": "1.0.0",
+          "SGE.Core": "1.0.0"
+        },
+        "runtime": {
+          "SGE.Infrastructure.dll": {}
+        }
+      },
+      "SGE.Application/1.0.0": {
+        "dependencies": {
+          "SGE.Core": "1.0.0"
+        },
+        "runtime": {
+          "SGE.Application.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
+      "SGE.Core/1.0.0": {
+        "runtime": {
+          "SGE.Core.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "SGE.Infrastructure/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "SGE.Application/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "SGE.Core/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
