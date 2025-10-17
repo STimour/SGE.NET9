@@ -11,6 +11,99 @@
   <component name="ChangeListManager">
     <list default="true" id="3104b775-265e-4b03-84c3-9f5e734814c7" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.SGE/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.SGE/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.API/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SGE.API/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.API/SGE.API.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/SGE.API/SGE.API.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.API/appsettings.Development.json" beforeDir="false" afterPath="$PROJECT_DIR$/SGE.API/appsettings.Development.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.API/bin/Debug/net9.0/SGE.API.deps.json" beforeDir="false" afterPath="$PROJECT_DIR$/SGE.API/bin/Debug/net9.0/SGE.API.deps.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.API/bin/Debug/net9.0/SGE.API.dll" beforeDir="false" afterPath="$PROJECT_DIR$/SGE.API/bin/Debug/net9.0/SGE.API.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.API/bin/Debug/net9.0/SGE.API.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/SGE.API/bin/Debug/net9.0/SGE.API.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.API/bin/Debug/net9.0/SGE.API.runtimeconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/SGE.API/bin/Debug/net9.0/SGE.API.runtimeconfig.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.API/bin/Debug/net9.0/SGE.Application.dll" beforeDir="false" afterPath="$PROJECT_DIR$/SGE.API/bin/Debug/net9.0/SGE.Application.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.API/bin/Debug/net9.0/SGE.Application.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/SGE.API/bin/Debug/net9.0/SGE.Application.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.API/bin/Debug/net9.0/SGE.Core.dll" beforeDir="false" afterPath="$PROJECT_DIR$/SGE.API/bin/Debug/net9.0/SGE.Core.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.API/bin/Debug/net9.0/SGE.Core.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/SGE.API/bin/Debug/net9.0/SGE.Core.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.API/bin/Debug/net9.0/SGE.Infrastructure.dll" beforeDir="false" afterPath="$PROJECT_DIR$/SGE.API/bin/Debug/net9.0/SGE.Infrastructure.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.API/bin/Debug/net9.0/SGE.Infrastructure.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/SGE.API/bin/Debug/net9.0/SGE.Infrastructure.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.API/bin/Debug/net9.0/appsettings.Development.json" beforeDir="false" afterPath="$PROJECT_DIR$/SGE.API/bin/Debug/net9.0/appsettings.Development.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.API/obj/Debug/net9.0/SGE.API.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SGE.API/obj/Debug/net9.0/SGE.API.AssemblyInfo.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.API/obj/Debug/net9.0/SGE.API.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/SGE.API/obj/Debug/net9.0/SGE.API.AssemblyInfoInputs.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.API/obj/Debug/net9.0/SGE.API.GeneratedMSBuildEditorConfig.editorconfig" beforeDir="false" afterPath="$PROJECT_DIR$/SGE.API/obj/Debug/net9.0/SGE.API.GeneratedMSBuildEditorConfig.editorconfig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.API/obj/Debug/net9.0/SGE.API.assets.cache" beforeDir="false" afterPath="$PROJECT_DIR$/SGE.API/obj/Debug/net9.0/SGE.API.assets.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.API/obj/Debug/net9.0/SGE.API.csproj.AssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/SGE.API/obj/Debug/net9.0/SGE.API.csproj.AssemblyReference.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.API/obj/Debug/net9.0/SGE.API.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/SGE.API/obj/Debug/net9.0/SGE.API.csproj.CoreCompileInputs.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.API/obj/Debug/net9.0/SGE.API.csproj.FileListAbsolute.txt" beforeDir="false" afterPath="$PROJECT_DIR$/SGE.API/obj/Debug/net9.0/SGE.API.csproj.FileListAbsolute.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.API/obj/Debug/net9.0/SGE.API.dll" beforeDir="false" afterPath="$PROJECT_DIR$/SGE.API/obj/Debug/net9.0/SGE.API.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.API/obj/Debug/net9.0/SGE.API.genruntimeconfig.cache" beforeDir="false" afterPath="$PROJECT_DIR$/SGE.API/obj/Debug/net9.0/SGE.API.genruntimeconfig.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.API/obj/Debug/net9.0/SGE.API.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/SGE.API/obj/Debug/net9.0/SGE.API.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.API/obj/Debug/net9.0/SGE.API.sourcelink.json" beforeDir="false" afterPath="$PROJECT_DIR$/SGE.API/obj/Debug/net9.0/SGE.API.sourcelink.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.API/obj/Debug/net9.0/ref/SGE.API.dll" beforeDir="false" afterPath="$PROJECT_DIR$/SGE.API/obj/Debug/net9.0/ref/SGE.API.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.API/obj/Debug/net9.0/refint/SGE.API.dll" beforeDir="false" afterPath="$PROJECT_DIR$/SGE.API/obj/Debug/net9.0/refint/SGE.API.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.API/obj/Debug/net9.0/rjsmcshtml.dswa.cache.json" beforeDir="false" afterPath="$PROJECT_DIR$/SGE.API/obj/Debug/net9.0/rjsmcshtml.dswa.cache.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.API/obj/Debug/net9.0/rjsmrazor.dswa.cache.json" beforeDir="false" afterPath="$PROJECT_DIR$/SGE.API/obj/Debug/net9.0/rjsmrazor.dswa.cache.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.API/obj/Debug/net9.0/rpswa.dswa.cache.json" beforeDir="false" afterPath="$PROJECT_DIR$/SGE.API/obj/Debug/net9.0/rpswa.dswa.cache.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.API/obj/SGE.API.csproj.nuget.dgspec.json" beforeDir="false" afterPath="$PROJECT_DIR$/SGE.API/obj/SGE.API.csproj.nuget.dgspec.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.API/obj/SGE.API.csproj.nuget.g.props" beforeDir="false" afterPath="$PROJECT_DIR$/SGE.API/obj/SGE.API.csproj.nuget.g.props" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.API/obj/SGE.API.csproj.nuget.g.targets" beforeDir="false" afterPath="$PROJECT_DIR$/SGE.API/obj/SGE.API.csproj.nuget.g.targets" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.API/obj/project.assets.json" beforeDir="false" afterPath="$PROJECT_DIR$/SGE.API/obj/project.assets.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.API/obj/project.nuget.cache" beforeDir="false" afterPath="$PROJECT_DIR$/SGE.API/obj/project.nuget.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.API/obj/project.packagespec.json" beforeDir="false" afterPath="$PROJECT_DIR$/SGE.API/obj/project.packagespec.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.API/obj/rider.project.model.nuget.info" beforeDir="false" afterPath="$PROJECT_DIR$/SGE.API/obj/rider.project.model.nuget.info" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.API/obj/rider.project.restore.info" beforeDir="false" afterPath="$PROJECT_DIR$/SGE.API/obj/rider.project.restore.info" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.Application/bin/Debug/net9.0/SGE.Application.dll" beforeDir="false" afterPath="$PROJECT_DIR$/SGE.Application/bin/Debug/net9.0/SGE.Application.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.Application/bin/Debug/net9.0/SGE.Application.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/SGE.Application/bin/Debug/net9.0/SGE.Application.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.Application/bin/Debug/net9.0/SGE.Core.dll" beforeDir="false" afterPath="$PROJECT_DIR$/SGE.Application/bin/Debug/net9.0/SGE.Core.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.Application/bin/Debug/net9.0/SGE.Core.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/SGE.Application/bin/Debug/net9.0/SGE.Core.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.Application/obj/Debug/net9.0/SGE.Application.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SGE.Application/obj/Debug/net9.0/SGE.Application.AssemblyInfo.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.Application/obj/Debug/net9.0/SGE.Application.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/SGE.Application/obj/Debug/net9.0/SGE.Application.AssemblyInfoInputs.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.Application/obj/Debug/net9.0/SGE.Application.csproj.AssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/SGE.Application/obj/Debug/net9.0/SGE.Application.csproj.AssemblyReference.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.Application/obj/Debug/net9.0/SGE.Application.dll" beforeDir="false" afterPath="$PROJECT_DIR$/SGE.Application/obj/Debug/net9.0/SGE.Application.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.Application/obj/Debug/net9.0/SGE.Application.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/SGE.Application/obj/Debug/net9.0/SGE.Application.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.Application/obj/Debug/net9.0/SGE.Application.sourcelink.json" beforeDir="false" afterPath="$PROJECT_DIR$/SGE.Application/obj/Debug/net9.0/SGE.Application.sourcelink.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.Application/obj/Debug/net9.0/ref/SGE.Application.dll" beforeDir="false" afterPath="$PROJECT_DIR$/SGE.Application/obj/Debug/net9.0/ref/SGE.Application.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.Application/obj/Debug/net9.0/refint/SGE.Application.dll" beforeDir="false" afterPath="$PROJECT_DIR$/SGE.Application/obj/Debug/net9.0/refint/SGE.Application.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.Application/obj/rider.project.restore.info" beforeDir="false" afterPath="$PROJECT_DIR$/SGE.Application/obj/rider.project.restore.info" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.Core/Entities/Employee.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SGE.Core/Entities/Employee.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.Core/Entities/LeaveStatus.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SGE.Core/Enums/LeaveStatus.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.Core/Entities/LeaveType.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SGE.Core/Enums/LeaveType.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.Core/bin/Debug/net9.0/SGE.Core.dll" beforeDir="false" afterPath="$PROJECT_DIR$/SGE.Core/bin/Debug/net9.0/SGE.Core.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.Core/bin/Debug/net9.0/SGE.Core.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/SGE.Core/bin/Debug/net9.0/SGE.Core.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.Core/obj/Debug/net9.0/SGE.Core.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SGE.Core/obj/Debug/net9.0/SGE.Core.AssemblyInfo.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.Core/obj/Debug/net9.0/SGE.Core.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/SGE.Core/obj/Debug/net9.0/SGE.Core.AssemblyInfoInputs.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.Core/obj/Debug/net9.0/SGE.Core.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/SGE.Core/obj/Debug/net9.0/SGE.Core.csproj.CoreCompileInputs.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.Core/obj/Debug/net9.0/SGE.Core.dll" beforeDir="false" afterPath="$PROJECT_DIR$/SGE.Core/obj/Debug/net9.0/SGE.Core.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.Core/obj/Debug/net9.0/SGE.Core.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/SGE.Core/obj/Debug/net9.0/SGE.Core.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.Core/obj/Debug/net9.0/SGE.Core.sourcelink.json" beforeDir="false" afterPath="$PROJECT_DIR$/SGE.Core/obj/Debug/net9.0/SGE.Core.sourcelink.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.Core/obj/Debug/net9.0/ref/SGE.Core.dll" beforeDir="false" afterPath="$PROJECT_DIR$/SGE.Core/obj/Debug/net9.0/ref/SGE.Core.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.Core/obj/Debug/net9.0/refint/SGE.Core.dll" beforeDir="false" afterPath="$PROJECT_DIR$/SGE.Core/obj/Debug/net9.0/refint/SGE.Core.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.Core/obj/rider.project.restore.info" beforeDir="false" afterPath="$PROJECT_DIR$/SGE.Core/obj/rider.project.restore.info" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.Infrastructure/SGE.Infrastructure.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/SGE.Infrastructure/SGE.Infrastructure.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.Infrastructure/bin/Debug/net9.0/SGE.Application.dll" beforeDir="false" afterPath="$PROJECT_DIR$/SGE.Infrastructure/bin/Debug/net9.0/SGE.Application.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.Infrastructure/bin/Debug/net9.0/SGE.Application.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/SGE.Infrastructure/bin/Debug/net9.0/SGE.Application.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.Infrastructure/bin/Debug/net9.0/SGE.Core.dll" beforeDir="false" afterPath="$PROJECT_DIR$/SGE.Infrastructure/bin/Debug/net9.0/SGE.Core.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.Infrastructure/bin/Debug/net9.0/SGE.Core.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/SGE.Infrastructure/bin/Debug/net9.0/SGE.Core.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.Infrastructure/bin/Debug/net9.0/SGE.Infrastructure.deps.json" beforeDir="false" afterPath="$PROJECT_DIR$/SGE.Infrastructure/bin/Debug/net9.0/SGE.Infrastructure.deps.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.Infrastructure/bin/Debug/net9.0/SGE.Infrastructure.dll" beforeDir="false" afterPath="$PROJECT_DIR$/SGE.Infrastructure/bin/Debug/net9.0/SGE.Infrastructure.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.Infrastructure/bin/Debug/net9.0/SGE.Infrastructure.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/SGE.Infrastructure/bin/Debug/net9.0/SGE.Infrastructure.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.Infrastructure/obj/Debug/net9.0/SGE.Infrastructure.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SGE.Infrastructure/obj/Debug/net9.0/SGE.Infrastructure.AssemblyInfo.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.Infrastructure/obj/Debug/net9.0/SGE.Infrastructure.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/SGE.Infrastructure/obj/Debug/net9.0/SGE.Infrastructure.AssemblyInfoInputs.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.Infrastructure/obj/Debug/net9.0/SGE.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig" beforeDir="false" afterPath="$PROJECT_DIR$/SGE.Infrastructure/obj/Debug/net9.0/SGE.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.Infrastructure/obj/Debug/net9.0/SGE.Infrastructure.assets.cache" beforeDir="false" afterPath="$PROJECT_DIR$/SGE.Infrastructure/obj/Debug/net9.0/SGE.Infrastructure.assets.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.Infrastructure/obj/Debug/net9.0/SGE.Infrastructure.csproj.AssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/SGE.Infrastructure/obj/Debug/net9.0/SGE.Infrastructure.csproj.AssemblyReference.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.Infrastructure/obj/Debug/net9.0/SGE.Infrastructure.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/SGE.Infrastructure/obj/Debug/net9.0/SGE.Infrastructure.csproj.CoreCompileInputs.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.Infrastructure/obj/Debug/net9.0/SGE.Infrastructure.csproj.FileListAbsolute.txt" beforeDir="false" afterPath="$PROJECT_DIR$/SGE.Infrastructure/obj/Debug/net9.0/SGE.Infrastructure.csproj.FileListAbsolute.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.Infrastructure/obj/Debug/net9.0/SGE.Infrastructure.dll" beforeDir="false" afterPath="$PROJECT_DIR$/SGE.Infrastructure/obj/Debug/net9.0/SGE.Infrastructure.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.Infrastructure/obj/Debug/net9.0/SGE.Infrastructure.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/SGE.Infrastructure/obj/Debug/net9.0/SGE.Infrastructure.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.Infrastructure/obj/Debug/net9.0/SGE.Infrastructure.sourcelink.json" beforeDir="false" afterPath="$PROJECT_DIR$/SGE.Infrastructure/obj/Debug/net9.0/SGE.Infrastructure.sourcelink.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.Infrastructure/obj/Debug/net9.0/ref/SGE.Infrastructure.dll" beforeDir="false" afterPath="$PROJECT_DIR$/SGE.Infrastructure/obj/Debug/net9.0/ref/SGE.Infrastructure.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.Infrastructure/obj/Debug/net9.0/refint/SGE.Infrastructure.dll" beforeDir="false" afterPath="$PROJECT_DIR$/SGE.Infrastructure/obj/Debug/net9.0/refint/SGE.Infrastructure.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.Infrastructure/obj/SGE.Infrastructure.csproj.nuget.dgspec.json" beforeDir="false" afterPath="$PROJECT_DIR$/SGE.Infrastructure/obj/SGE.Infrastructure.csproj.nuget.dgspec.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.Infrastructure/obj/SGE.Infrastructure.csproj.nuget.g.props" beforeDir="false" afterPath="$PROJECT_DIR$/SGE.Infrastructure/obj/SGE.Infrastructure.csproj.nuget.g.props" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.Infrastructure/obj/SGE.Infrastructure.csproj.nuget.g.targets" beforeDir="false" afterPath="$PROJECT_DIR$/SGE.Infrastructure/obj/SGE.Infrastructure.csproj.nuget.g.targets" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.Infrastructure/obj/project.assets.json" beforeDir="false" afterPath="$PROJECT_DIR$/SGE.Infrastructure/obj/project.assets.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.Infrastructure/obj/project.nuget.cache" beforeDir="false" afterPath="$PROJECT_DIR$/SGE.Infrastructure/obj/project.nuget.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.Infrastructure/obj/project.packagespec.json" beforeDir="false" afterPath="$PROJECT_DIR$/SGE.Infrastructure/obj/project.packagespec.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.Infrastructure/obj/rider.project.model.nuget.info" beforeDir="false" afterPath="$PROJECT_DIR$/SGE.Infrastructure/obj/rider.project.model.nuget.info" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.Infrastructure/obj/rider.project.restore.info" beforeDir="false" afterPath="$PROJECT_DIR$/SGE.Infrastructure/obj/rider.project.restore.info" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,8 +119,9 @@
     <setting file="file://$PROJECT_DIR$/SGE.Core/Entities/Departement.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/SGE.Core/Entities/Employee.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/SGE.Core/Entities/LeaveRequest.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/SGE.Core/Entities/LeaveStatus.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/SGE.Core/Entities/LeaveType.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/SGE.Core/Enums/LeaveStatus.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/SGE.Core/Enums/LeaveType.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/SGE.Infrastructure/Data/ApplicationDbContext.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 1
@@ -44,7 +138,7 @@
   "keyToString": {
     "Docker.SGE.API/Dockerfile.executor": "Run",
     "Docker.compose.yaml.sge.postgres: Compose Deployment.executor": "Run",
-    "Docker.compose.yaml: Compose Deployment.executor": "Debug",
+    "Docker.compose.yaml: Compose Deployment.executor": "Run",
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
@@ -58,7 +152,7 @@
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
-  <component name="RunManager" selected=".NET Launch Settings Profile.SGE.API: http">
+  <component name="RunManager" selected="Docker.compose.yaml: Compose Deployment">
     <configuration name="SGE.API: http" type="LaunchSettings" factoryName=".NET Launch Settings Profile">
       <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/SGE.API/SGE.API.csproj" />
       <option name="LAUNCH_PROFILE_TFM" value="net9.0" />
@@ -172,7 +266,7 @@
       <workItem from="1760443746904" duration="389000" />
       <workItem from="1760444344404" duration="4307000" />
       <workItem from="1760598120943" duration="3400000" />
-      <workItem from="1760602694111" duration="6104000" />
+      <workItem from="1760602694111" duration="15351000" />
     </task>
     <servers />
   </component>

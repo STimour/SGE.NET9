@@ -16,3 +16,5 @@
 /Users/tim/M2cours/webService/SGE/SGE.Infrastructure/obj/Debug/net9.0/refint/SGE.Infrastructure.dll
 /Users/tim/M2cours/webService/SGE/SGE.Infrastructure/obj/Debug/net9.0/SGE.Infrastructure.pdb
 /Users/tim/M2cours/webService/SGE/SGE.Infrastructure/obj/Debug/net9.0/ref/SGE.Infrastructure.dll
+/Users/tim/M2cours/webService/SGE/SGE.Infrastructure/bin/Debug/net9.0/SGE.Infrastructure.runtimeconfig.json
+/Users/tim/M2cours/webService/SGE/SGE.Infrastructure/obj/Debug/net9.0/SGE.Infrastructure.genruntimeconfig.cache

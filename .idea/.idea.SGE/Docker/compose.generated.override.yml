@@ -1,0 +1,21 @@
+# This is a generated file. Not intended for manual editing.
+version: "3.9"
+services:
+  sge.api:
+    build:
+      context: "/Users/tim/M2cours/webService/SGE"
+      dockerfile: "../SGE/SGE.API/Dockerfile"
+      target: "base"
+    command: []
+    entrypoint:
+    - "dotnet"
+    - "/app/bin/Debug/net9.0/SGE.API.dll"
+    environment:
+      DOTNET_USE_POLLING_FILE_WATCHER: "true"
+    image: "sge.api:dev"
+    ports: []
+    volumes:
+    - "/Users/tim/M2cours/webService/SGE/SGE.API:/app:rw"
+    - "/Users/tim/M2cours/webService/SGE:/src:rw"
+    - "/Users/tim/.nuget/packages:/root/.nuget/packages"
+    working_dir: "/app"
