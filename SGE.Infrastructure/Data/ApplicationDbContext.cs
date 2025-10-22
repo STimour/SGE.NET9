@@ -8,7 +8,7 @@ public class ApplicationDbContext : DbContext
     public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
         : base(options) { }
 
-    public DbSet<Departement> Departaments { get; set; }
+    public DbSet<Department> Departaments { get; set; }
     public DbSet<Employee> Employees { get; set; }
     public DbSet<Attendance> Attendances { get; set; }
     public DbSet<LeaveRequest> LeaveRequests { get; set; }
@@ -18,7 +18,7 @@ public class ApplicationDbContext : DbContext
         
         base.OnModelCreating(builder);
 
-        builder.Entity<Departement>(entity =>
+        builder.Entity<Department>(entity =>
             {
                 entity.HasKey(d => d.Id);
                 entity.Property(d => d.Name).IsRequired().HasMaxLength(100);

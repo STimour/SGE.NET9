@@ -41,7 +41,7 @@ public class Employee : BaseEntity
     /// <summary>
     /// Gets or sets the department associated with the employee.
     /// </summary>
-    public virtual Departement Departments { get; set; } = null!;
+    public virtual Department Departments { get; set; } = null!;
     /// <summary>
     /// Gets or sets the collection of attendance records associated with the employee.
     /// </summary>

@@ -77,7 +77,7 @@ namespace SGE.Infrastructure.Migrations
                     b.ToTable("Attendances");
                 });
 
-            modelBuilder.Entity("SGE.Core.Entities.Departement", b =>
+            modelBuilder.Entity("SGE.Core.Entities.Department", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -266,13 +266,13 @@ namespace SGE.Infrastructure.Migrations
 
             modelBuilder.Entity("SGE.Core.Entities.Employee", b =>
                 {
-                    b.HasOne("SGE.Core.Entities.Departement", "Departement")
+                    b.HasOne("SGE.Core.Entities.Department", "Departments")
                         .WithMany("Employees")
                         .HasForeignKey("DepartmentId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
-                    b.Navigation("Departement");
+                    b.Navigation("Departments");
                 });
 
             modelBuilder.Entity("SGE.Core.Entities.LeaveRequest", b =>
@@ -286,7 +286,7 @@ namespace SGE.Infrastructure.Migrations
                     b.Navigation("Employee");
                 });
 
-            modelBuilder.Entity("SGE.Core.Entities.Departement", b =>
+            modelBuilder.Entity("SGE.Core.Entities.Department", b =>
                 {
                     b.Navigation("Employees");
                 });

@@ -1,6 +1,6 @@
 namespace SGE.Core.Entities;
 
-public class Departement : BaseEntity
+public class Department : BaseEntity
 {
     /// <summary>
     /// Gets or sets the name of the department.
