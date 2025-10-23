@@ -1,4 +1,5 @@
 using AutoMapper;
+using SGE.Application.DTO.Department;
 using SGE.Application.DTO.Employee;
 using SGE.Core.Entities;
 
@@ -8,6 +9,7 @@ public class MappingProfile : Profile
 {
     public MappingProfile()
     {
+        // Employee
         CreateMap<Employee, EmployeeDto>()
             .ForMember(dest => dest.FullName, opt => opt.MapFrom(src =>
                 $"{src.FirstName} {src.LastName}"))
@@ -21,5 +23,11 @@ public class MappingProfile : Profile
         CreateMap<EmployeeUpdateDto, Employee>()
             .ForAllMembers(opts => opts.Condition((src, dest, srcMember) => srcMember != null)); // ignore nulls
         
+        // Department mapping
+        CreateMap<Department, DepartmentDto>();
+        CreateMap<DepartmentCreateDto, Department>();
+        CreateMap<DepartmentUpdateDto, Department>()
+            .ForAllMembers(opts => opts.Condition((src, dest, srcMember)
+                => srcMember != null));
     }
 }

@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using SGE.Application.Mapping;
 using SGE.Infrastructure.Data;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -9,7 +10,9 @@ var connectionString = builder.Configuration.GetConnectionString("DefaultConnect
 // Ajout DbContext
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseNpgsql(connectionString));
-    
+
+// Ajout mapper
+builder.Services.AddAutoMapper(cfg => { }, typeof(MappingProfile).Assembly);
 // Add services to the container
 builder.Services.AddControllers();
 
