@@ -11,15 +11,6 @@
   <component name="ChangeListManager">
     <list default="true" id="3104b775-265e-4b03-84c3-9f5e734814c7" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.SGE/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.SGE/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SGE.API/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SGE.API/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SGE.API/obj/Debug/net9.0/SGE.API.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SGE.API/obj/Debug/net9.0/SGE.API.AssemblyInfo.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SGE.API/obj/Debug/net9.0/SGE.API.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/SGE.API/obj/Debug/net9.0/SGE.API.AssemblyInfoInputs.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SGE.Application/obj/Debug/net9.0/SGE.Application.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SGE.Application/obj/Debug/net9.0/SGE.Application.AssemblyInfo.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SGE.Application/obj/Debug/net9.0/SGE.Application.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/SGE.Application/obj/Debug/net9.0/SGE.Application.AssemblyInfoInputs.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SGE.Core/obj/Debug/net9.0/SGE.Core.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SGE.Core/obj/Debug/net9.0/SGE.Core.AssemblyInfo.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SGE.Core/obj/Debug/net9.0/SGE.Core.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/SGE.Core/obj/Debug/net9.0/SGE.Core.AssemblyInfoInputs.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SGE.Infrastructure/obj/Debug/net9.0/SGE.Infrastructure.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SGE.Infrastructure/obj/Debug/net9.0/SGE.Infrastructure.AssemblyInfo.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SGE.Infrastructure/obj/Debug/net9.0/SGE.Infrastructure.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/SGE.Infrastructure/obj/Debug/net9.0/SGE.Infrastructure.AssemblyInfoInputs.cache" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -202,7 +193,7 @@
       <workItem from="1760900050561" duration="56000" />
       <workItem from="1761158668187" duration="4488000" />
       <workItem from="1761247213485" duration="4367000" />
-      <workItem from="1761403420925" duration="4540000" />
+      <workItem from="1761403420925" duration="5900000" />
     </task>
     <servers />
   </component>
