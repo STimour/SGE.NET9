@@ -1,6 +1,6 @@
 namespace SGE.Application.DTO.Employee;
 
-public class EmployeeCreateDto
+public class EmployeeUpdateDto
 {
     /// <summary>
     /// Gets or sets the first name of the employee.
@@ -13,19 +13,9 @@ public class EmployeeCreateDto
     public string LastName { get; set; } = string.Empty;
     
     /// <summary>
-    /// Gets or sets the email address of the employee.
-    /// </summary>
-    public string Email { get; set; } = string.Empty;
-    
-    /// <summary>
     /// Gets or sets the phone number of the employee.
     /// </summary>
     public string PhoneNumber { get; set; } = string.Empty;
-    
-    /// <summary>
-    /// Set bool to true employed by the company.
-    /// </summary>
-    public bool IsActive { get; set; } = true; 
     
     /// <summary>
     /// Gets or sets the address of the employee.
@@ -33,7 +23,7 @@ public class EmployeeCreateDto
     public string Address { get; set; } = string.Empty;
     
     /// <summary>
-    /// Gets or sets the position of the employee within the organization.
+    /// Gets or sets the position or job title of the employee.
     /// </summary>
     public string Position { get; set; } = string.Empty;
     
@@ -43,12 +33,17 @@ public class EmployeeCreateDto
     public decimal Salary { get; set; }
     
     /// <summary>
-    /// Gets or sets the hire date of the employee.
+    /// Set bool to true employed by the company.
     /// </summary>
-    public DateTime HireDate { get; set; }
+    public bool IsActive { get; set; } = true; 
+   
+    /// <summary>
+    /// Gets or sets the date when the employee left the company, if applicable.
+    /// </summary>
+    public DateTime? EndDate { get; set; } 
     
     /// <summary>
-    /// Gets or sets the identifier of the department to which the employee belongs.
+    /// Gets or sets the identifier of the department associated with the employee.
     /// </summary>
     public int DepartmentId { get; set; }
 }

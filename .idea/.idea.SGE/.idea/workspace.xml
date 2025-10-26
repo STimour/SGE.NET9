@@ -11,6 +11,21 @@
   <component name="ChangeListManager">
     <list default="true" id="3104b775-265e-4b03-84c3-9f5e734814c7" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.SGE/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.SGE/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.API/obj/Debug/net9.0/SGE.API.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SGE.API/obj/Debug/net9.0/SGE.API.AssemblyInfo.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.API/obj/Debug/net9.0/SGE.API.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/SGE.API/obj/Debug/net9.0/SGE.API.AssemblyInfoInputs.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.Application/DTO/Employee/EmployeCreateDto.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SGE.Application/DTO/Employee/EmployeCreateDto.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.Application/DTO/Employee/Employee.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SGE.Application/DTO/Employee/EmployeeUpdateDto.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.Application/DTO/Employee/EmployeeDto.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SGE.Application/DTO/Employee/EmployeeDto.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.Application/Interfaces/IRepositories/IEmployeeRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SGE.Application/Interfaces/IRepositories/IEmployeeRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.Application/Mapping/MappingProfile.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SGE.Application/Mapping/MappingProfile.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.Application/obj/Debug/net9.0/SGE.Application.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SGE.Application/obj/Debug/net9.0/SGE.Application.AssemblyInfo.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.Application/obj/Debug/net9.0/SGE.Application.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/SGE.Application/obj/Debug/net9.0/SGE.Application.AssemblyInfoInputs.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.Core/Entities/Employee.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SGE.Core/Entities/Employee.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.Core/obj/Debug/net9.0/SGE.Core.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SGE.Core/obj/Debug/net9.0/SGE.Core.AssemblyInfo.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.Core/obj/Debug/net9.0/SGE.Core.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/SGE.Core/obj/Debug/net9.0/SGE.Core.AssemblyInfoInputs.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.Infrastructure/Repositories/EmployeeRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SGE.Infrastructure/Repositories/EmployeeRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.Infrastructure/obj/Debug/net9.0/SGE.Infrastructure.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SGE.Infrastructure/obj/Debug/net9.0/SGE.Infrastructure.AssemblyInfo.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.Infrastructure/obj/Debug/net9.0/SGE.Infrastructure.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/SGE.Infrastructure/obj/Debug/net9.0/SGE.Infrastructure.AssemblyInfoInputs.cache" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,6 +44,7 @@
     <setting file="file://$PROJECT_DIR$/SGE.Application/Interfaces/IRepositories/IEmployeeRepository.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/SGE.Application/Interfaces/IRepositories/IRepositorys.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/SGE.Application/Interfaces/IServices/IDepartmentService.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/SGE.Application/Interfaces/IServices/IEmployeeService.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/SGE.Application/Mapping/MappingProfile.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/SGE.Application/Services/DepartmentService.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/SGE.Core/Entities/Attendance.cs" root0="FORCE_HIGHLIGHTING" />
@@ -193,7 +209,8 @@
       <workItem from="1760900050561" duration="56000" />
       <workItem from="1761158668187" duration="4488000" />
       <workItem from="1761247213485" duration="4367000" />
-      <workItem from="1761403420925" duration="5900000" />
+      <workItem from="1761403420925" duration="6056000" />
+      <workItem from="1761475019701" duration="3977000" />
     </task>
     <servers />
   </component>

@@ -17,7 +17,18 @@ public class EmployeeRepository : Repository<Employee>, IEmployeeRepository
     /// <inheritdoc/>
     public async Task<Employee?> GetByEmailAsync(string email, CancellationToken cancellationToken = default)
     {
-        return await _dbSet.FirstOrDefaultAsync(e => e.Email == email, cancellationToken);
+        return await _dbSet.Include(e => e.Departments)
+                           .FirstOrDefaultAsync(e => e.Email == email, cancellationToken);
+    }
+    
+    /// <inheritdoc/>
+    public async Task<IEnumerable<Employee>> GetByDepartmentAsync(int
+        departmentId, CancellationToken cancellationToken = default)
+    {
+        return await _dbSet.AsNoTracking()
+                           .Where(e => e.DepartmentId == departmentId)
+                           .Include(e => e.Departments)
+                           .ToListAsync(cancellationToken);
     }
     
     /// <inheritdoc/>
@@ -26,6 +37,8 @@ public class EmployeeRepository : Repository<Employee>, IEmployeeRepository
         return await _dbSet.Include(e => e.Departments)
             .FirstOrDefaultAsync(e => e.Id == id, cancellationToken);
     }
+    
+    
     
     /// <inheritdoc/>
     public async Task<IEnumerable<Employee>> GetPagedAsync(int
