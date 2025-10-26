@@ -14,17 +14,12 @@
       <change beforePath="$PROJECT_DIR$/SGE.API/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SGE.API/Program.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/SGE.API/obj/Debug/net9.0/SGE.API.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SGE.API/obj/Debug/net9.0/SGE.API.AssemblyInfo.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/SGE.API/obj/Debug/net9.0/SGE.API.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/SGE.API/obj/Debug/net9.0/SGE.API.AssemblyInfoInputs.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SGE.API/obj/rider.project.model.nuget.info" beforeDir="false" afterPath="$PROJECT_DIR$/SGE.API/obj/rider.project.model.nuget.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SGE.Application/Mapping/MappingProfile.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SGE.Application/Mapping/MappingProfile.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/SGE.Application/obj/Debug/net9.0/SGE.Application.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SGE.Application/obj/Debug/net9.0/SGE.Application.AssemblyInfo.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/SGE.Application/obj/Debug/net9.0/SGE.Application.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/SGE.Application/obj/Debug/net9.0/SGE.Application.AssemblyInfoInputs.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SGE.Application/obj/rider.project.model.nuget.info" beforeDir="false" afterPath="$PROJECT_DIR$/SGE.Application/obj/rider.project.model.nuget.info" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/SGE.Core/obj/Debug/net9.0/SGE.Core.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SGE.Core/obj/Debug/net9.0/SGE.Core.AssemblyInfo.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/SGE.Core/obj/Debug/net9.0/SGE.Core.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/SGE.Core/obj/Debug/net9.0/SGE.Core.AssemblyInfoInputs.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SGE.Core/obj/rider.project.model.nuget.info" beforeDir="false" afterPath="$PROJECT_DIR$/SGE.Core/obj/rider.project.model.nuget.info" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/SGE.Infrastructure/obj/Debug/net9.0/SGE.Infrastructure.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SGE.Infrastructure/obj/Debug/net9.0/SGE.Infrastructure.AssemblyInfo.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/SGE.Infrastructure/obj/Debug/net9.0/SGE.Infrastructure.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/SGE.Infrastructure/obj/Debug/net9.0/SGE.Infrastructure.AssemblyInfoInputs.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SGE.Infrastructure/obj/rider.project.model.nuget.info" beforeDir="false" afterPath="$PROJECT_DIR$/SGE.Infrastructure/obj/rider.project.model.nuget.info" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,6 +30,7 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/SGE.API/Controllers/DepartmentsController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/SGE.Application/DTO/Department/DepartmentCreateDto.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/SGE.Application/DTO/Department/DepartmentDto.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/SGE.Application/DTO/Department/DepartmentUpdateDto.cs" root0="FORCE_HIGHLIGHTING" />
@@ -43,6 +39,7 @@
     <setting file="file://$PROJECT_DIR$/SGE.Application/Interfaces/IRepositories/IRepositorys.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/SGE.Application/Interfaces/IServices/IDepartmentService.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/SGE.Application/Mapping/MappingProfile.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/SGE.Application/Services/DepartmentService.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/SGE.Core/Entities/Attendance.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/SGE.Core/Entities/BaseEntity.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/SGE.Core/Entities/Department.cs" root0="FORCE_HIGHLIGHTING" />
@@ -204,7 +201,8 @@
       <workItem from="1760602694111" duration="24263000" />
       <workItem from="1760900050561" duration="56000" />
       <workItem from="1761158668187" duration="4488000" />
-      <workItem from="1761247213485" duration="4280000" />
+      <workItem from="1761247213485" duration="4367000" />
+      <workItem from="1761403420925" duration="4540000" />
     </task>
     <servers />
   </component>
