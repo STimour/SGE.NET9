@@ -1,5 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Http;
 using SGE.Application.DTO.Department;
+using SGE.Application.DTO.Import;
 using SGE.Application.Interfaces.IServices;
 
 namespace SGE.API.Controllers;
@@ -10,7 +12,7 @@ namespace SGE.API.Controllers;
 /// </summary>
 [ApiController]
 [Route("api/[controller]")]
-public class DepartmentsController(IDepartmentService departmentService): ControllerBase
+public class DepartmentsController(IDepartmentService departmentService, IImportService importService): ControllerBase
 {
     /// <summary>   
     /// Retrieves all departments.
@@ -86,5 +88,20 @@ public class DepartmentsController(IDepartmentService departmentService): Contro
         if (!ok) return NotFound();
         
         return NoContent();
+    }
+
+    /// <summary>
+    /// Import departments from CSV or XLSX. Existing departments (by code or name) will be updated.
+    /// </summary>
+    [HttpPost("import")]
+    public async Task<IActionResult> ImportDepartments(IFormFile file, [FromQuery] string onDuplicate = "update", CancellationToken cancellationToken = default)
+    {
+        if (file == null) return BadRequest("File is required");
+
+        if (!Enum.TryParse<ImportDuplicateBehavior>(onDuplicate, true, out var behavior)) behavior = ImportDuplicateBehavior.Update;
+
+        using var stream = file.OpenReadStream();
+        var result = await importService.ImportDepartmentsAsync(stream, file.FileName, behavior, cancellationToken);
+        return Ok(result);
     }
 }
