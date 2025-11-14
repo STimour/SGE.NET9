@@ -51,4 +51,13 @@ public class EmployeeCreateDto
     /// Gets or sets the identifier of the department to which the employee belongs.
     /// </summary>
     public int DepartmentId { get; set; }
+    /// <summary>
+    /// Optional department code when importing by code.
+    /// </summary>
+    public string? DepartmentCode { get; set; }
+
+    /// <summary>
+    /// Optional department name when importing to create or map department.
+    /// </summary>
+    public string? DepartmentName { get; set; }
 }

@@ -1,5 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Http;
 using SGE.Application.DTO.Employee;
+using SGE.Application.DTO.Import;
 using SGE.Application.Interfaces.IServices;
 
 namespace SGE.API.Controllers;
@@ -9,7 +11,7 @@ namespace SGE.API.Controllers;
 /// </summary>
 [ApiController]
 [Route("api/[controller]")]
-public class EmployeeController(IEmployeeService  employeeService) : ControllerBase
+public class EmployeeController(IEmployeeService  employeeService, IImportService importService) : ControllerBase
 {
     /// <summary>
     /// Retrieves all employees.
@@ -111,5 +113,20 @@ public class EmployeeController(IEmployeeService  employeeService) : ControllerB
     {
     // TODO
         return NoContent();
+    }
+
+    /// <summary>
+    /// Import employees from CSV or XLSX file. If an employee with the same email exists it will be updated.
+    /// </summary>
+    [HttpPost("import")]
+    public async Task<IActionResult> ImportEmployees(IFormFile file, [FromQuery] string onDuplicate = "update", CancellationToken cancellationToken = default)
+    {
+        if (file == null) return BadRequest("File is required");
+
+        if (!Enum.TryParse<ImportDuplicateBehavior>(onDuplicate, true, out var behavior)) behavior = ImportDuplicateBehavior.Update;
+
+        using var stream = file.OpenReadStream();
+        var result = await importService.ImportEmployeesAsync(stream, file.FileName, behavior, cancellationToken);
+        return Ok(result);
     }
 }
