@@ -15,7 +15,6 @@
 /Users/tim/M2cours/webService/SGE/SGE.API/bin/Debug/net9.0/SGE.Infrastructure.pdb
 /Users/tim/M2cours/webService/SGE/SGE.API/bin/Debug/net9.0/SGE.Core.pdb
 /Users/tim/M2cours/webService/SGE/SGE.API/obj/Debug/net9.0/SGE.API.csproj.AssemblyReference.cache
-/Users/tim/M2cours/webService/SGE/SGE.API/obj/Debug/net9.0/rpswa.dswa.cache.json
 /Users/tim/M2cours/webService/SGE/SGE.API/obj/Debug/net9.0/SGE.API.GeneratedMSBuildEditorConfig.editorconfig
 /Users/tim/M2cours/webService/SGE/SGE.API/obj/Debug/net9.0/SGE.API.AssemblyInfoInputs.cache
 /Users/tim/M2cours/webService/SGE/SGE.API/obj/Debug/net9.0/SGE.API.AssemblyInfo.cs
@@ -23,12 +22,8 @@
 /Users/tim/M2cours/webService/SGE/SGE.API/obj/Debug/net9.0/SGE.API.MvcApplicationPartsAssemblyInfo.cs
 /Users/tim/M2cours/webService/SGE/SGE.API/obj/Debug/net9.0/SGE.API.MvcApplicationPartsAssemblyInfo.cache
 /Users/tim/M2cours/webService/SGE/SGE.API/obj/Debug/net9.0/SGE.API.sourcelink.json
-/Users/tim/M2cours/webService/SGE/SGE.API/obj/Debug/net9.0/rjimswa.dswa.cache.json
-/Users/tim/M2cours/webService/SGE/SGE.API/obj/Debug/net9.0/rjsmrazor.dswa.cache.json
-/Users/tim/M2cours/webService/SGE/SGE.API/obj/Debug/net9.0/rjsmcshtml.dswa.cache.json
 /Users/tim/M2cours/webService/SGE/SGE.API/obj/Debug/net9.0/scopedcss/bundle/SGE.API.styles.css
 /Users/tim/M2cours/webService/SGE/SGE.API/obj/Debug/net9.0/staticwebassets.build.json
-/Users/tim/M2cours/webService/SGE/SGE.API/obj/Debug/net9.0/staticwebassets.build.json.cache
 /Users/tim/M2cours/webService/SGE/SGE.API/obj/Debug/net9.0/staticwebassets.development.json
 /Users/tim/M2cours/webService/SGE/SGE.API/obj/Debug/net9.0/staticwebassets.build.endpoints.json
 /Users/tim/M2cours/webService/SGE/SGE.API/obj/Debug/net9.0/SGE.API.csproj.Up2Date
@@ -140,3 +135,9 @@
 /Users/tim/M2cours/webService/SGE/SGE.API/bin/Debug/net9.0/Microsoft.IdentityModel.JsonWebTokens.dll
 /Users/tim/M2cours/webService/SGE/SGE.API/bin/Debug/net9.0/Microsoft.IdentityModel.Logging.dll
 /Users/tim/M2cours/webService/SGE/SGE.API/bin/Debug/net9.0/Microsoft.IdentityModel.Tokens.dll
+/Users/tim/M2cours/webService/SGE/SGE.API/obj/Debug/net9.0/staticwebassets/msbuild.SGE.API.Microsoft.AspNetCore.StaticWebAssets.props
+/Users/tim/M2cours/webService/SGE/SGE.API/obj/Debug/net9.0/staticwebassets/msbuild.SGE.API.Microsoft.AspNetCore.StaticWebAssetEndpoints.props
+/Users/tim/M2cours/webService/SGE/SGE.API/obj/Debug/net9.0/staticwebassets/msbuild.build.SGE.API.props
+/Users/tim/M2cours/webService/SGE/SGE.API/obj/Debug/net9.0/staticwebassets/msbuild.buildMultiTargeting.SGE.API.props
+/Users/tim/M2cours/webService/SGE/SGE.API/obj/Debug/net9.0/staticwebassets/msbuild.buildTransitive.SGE.API.props
+/Users/tim/M2cours/webService/SGE/SGE.API/obj/Debug/net9.0/staticwebassets.pack.json
