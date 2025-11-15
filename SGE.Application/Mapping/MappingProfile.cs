@@ -17,7 +17,7 @@ public class MappingProfile : Profile
             .ForMember(dest => dest.FullName, opt => opt.MapFrom(src =>
                 $"{src.FirstName} {src.LastName}"))
             .ForMember(dest => dest.DepartmentName, opt =>
-                opt.MapFrom(src => src.Departments.Name));
+                opt.MapFrom(src => src.Departments != null ? src.Departments.Name : string.Empty));
         CreateMap<EmployeeCreateDto, Employee>();
         CreateMap<EmployeeUpdateDto, Employee>()
             .ForAllMembers(opts => opts.Condition((src, dest, srcMember)

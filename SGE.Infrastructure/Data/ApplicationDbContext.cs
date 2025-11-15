@@ -41,6 +41,7 @@ public class ApplicationDbContext : DbContext
                 entity.HasOne(e => e.Departments)
                     .WithMany(d => d.Employees)
                     .HasForeignKey(e => e.DepartmentId)
+                    .IsRequired(false)
                     .OnDelete(DeleteBehavior.Restrict);
             }
         );

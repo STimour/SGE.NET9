@@ -55,7 +55,7 @@ public class Employee : BaseEntity
     /// <summary>
     /// Gets or sets the unique identifier of the department associated with the employee.
     /// </summary>
-    public int DepartmentId { get; set; }
+    public int? DepartmentId { get; set; }
 
     /// <summary>
     /// Gets or sets the department associated with the employee.
