@@ -95,7 +95,8 @@ public class EmployeeController(IEmployeeService  employeeService, IImportServic
     [HttpPut("{id:int}")]
     public async Task<IActionResult> Update(int id, EmployeeUpdateDto dto, CancellationToken cancellationToken)
     {
-    // TODO
+        var ok = await employeeService.UpdateAsync(id, dto, cancellationToken);
+        if (!ok) return NotFound();
         return NoContent();
     }
     
@@ -111,8 +112,19 @@ public class EmployeeController(IEmployeeService  employeeService, IImportServic
     [HttpDelete("{id:int}")]
     public async Task<IActionResult> Delete(int id, CancellationToken cancellationToken)
     {
-    // TODO
+        var ok = await employeeService.DeleteAsync(id, cancellationToken);
+        if (!ok) return NotFound();
         return NoContent();
+    }
+
+    /// <summary>
+    /// Create a new employee. Department is optional.
+    /// </summary>
+    [HttpPost]
+    public async Task<ActionResult<EmployeeDto>> Create(EmployeeCreateDto dto, CancellationToken cancellationToken)
+    {
+        var created = await employeeService.CreateAsync(dto, cancellationToken);
+        return CreatedAtAction(nameof(GetById), new { id = created.Id }, created);
     }
 
     /// <summary>

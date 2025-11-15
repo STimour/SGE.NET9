@@ -44,6 +44,7 @@ public class EmployeeUpdateDto
     
     /// <summary>
     /// Gets or sets the identifier of the department associated with the employee.
+    /// Nullable to allow removing or not specifying department on update.
     /// </summary>
-    public int DepartmentId { get; set; }
+    public int? DepartmentId { get; set; }
 }

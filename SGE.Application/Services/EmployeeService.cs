@@ -81,18 +81,20 @@ public class EmployeeService(IEmployeeRepository employeeRepository,
     public async Task<EmployeeDto> CreateAsync(EmployeeCreateDto dto,
         CancellationToken cancellationToken = default)
     {
-        var department = await departmentRepository.GetByIdAsync(dto.DepartmentId, cancellationToken);
-        
-        if (department == null) throw new ApplicationException("Il n'existe aucun departement avec cet identifiant");
-        
+        // allow creation without department (DepartmentId nullable)
+        if (dto.DepartmentId.HasValue && dto.DepartmentId.Value > 0)
+        {
+            var department = await departmentRepository.GetByIdAsync(dto.DepartmentId.Value, cancellationToken);
+            if (department == null) throw new ApplicationException("Il n'existe aucun departement avec cet identifiant");
+        }
+
         var existingEmployee = await employeeRepository.GetByEmailAsync(dto.Email, cancellationToken);
-        
         if (existingEmployee != null) throw new ApplicationException("Cet email existe déjà pour un autre employée");
-        
+
         var entity = mapper.Map<Employee>(dto);
-        
+
         await employeeRepository.AddAsync(entity, cancellationToken);
-        
+
         return mapper.Map<EmployeeDto>(entity);
     }
     
@@ -108,7 +110,36 @@ public class EmployeeService(IEmployeeRepository employeeRepository,
     ///</returns>
     public async Task<bool> UpdateAsync(int id, EmployeeUpdateDto dto, CancellationToken cancellationToken = default)
     {
-    // TODO
+        var existing = await employeeRepository.GetByIdAsync(id, cancellationToken);
+        if (existing == null) return false;
+
+        // If email being updated, ensure uniqueness
+        if (!string.IsNullOrWhiteSpace(dto.Email) && !string.Equals(dto.Email, existing.Email, StringComparison.OrdinalIgnoreCase))
+        {
+            var byEmail = await employeeRepository.GetByEmailAsync(dto.Email, cancellationToken);
+            if (byEmail != null && byEmail.Id != id) throw new ApplicationException("Cet email est déjà utilisé par un autre employé");
+        }
+
+        // If DepartmentId provided, verify it exists (allow null to remove department)
+        if (dto.DepartmentId.HasValue)
+        {
+            if (dto.DepartmentId.Value > 0)
+            {
+                var dept = await departmentRepository.GetByIdAsync(dto.DepartmentId.Value, cancellationToken);
+                if (dept == null) throw new ApplicationException("Le département spécifié n'existe pas");
+                existing.DepartmentId = dto.DepartmentId.Value;
+            }
+            else
+            {
+                // null or 0 => remove department association
+                existing.DepartmentId = null;
+            }
+        }
+
+        // Map remaining fields (EmployeeUpdateDto mapping configured to ignore nulls)
+        mapper.Map(dto, existing);
+        existing.UpdatedAt = DateTime.UtcNow;
+        await employeeRepository.UpdateAsync(existing, cancellationToken);
         return true;
     }
     
@@ -123,7 +154,10 @@ public class EmployeeService(IEmployeeRepository employeeRepository,
     /// </returns>
     public async Task<bool> DeleteAsync(int id, CancellationToken cancellationToken = default)
     {
-    // TODO
+        var existing = await employeeRepository.GetByIdAsync(id, cancellationToken);
+        if (existing == null) return false;
+
+        await employeeRepository.DeleteAsync(id, cancellationToken);
         return true;
     }
 }
