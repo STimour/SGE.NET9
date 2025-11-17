@@ -11,10 +11,21 @@ using SGE.Core.Entities;
 
 namespace SGE.Application.Services;
 
-public class ImportService(IEmployeeRepository employeeRepository,
-                           IDepartmentRepository departmentRepository,
-                           IMapper mapper) : IImportService
+public class ImportService : IImportService
 {
+    private readonly IEmployeeRepository employeeRepository;
+    private readonly IDepartmentRepository departmentRepository;
+    private readonly IMapper mapper;
+
+    public ImportService(IEmployeeRepository employeeRepository,
+                         IDepartmentRepository departmentRepository,
+                         IMapper mapper)
+    {
+        this.employeeRepository = employeeRepository;
+        this.departmentRepository = departmentRepository;
+        this.mapper = mapper;
+    }
+
     private static readonly Dictionary<string,string[]> EmployeeHeaderAliases = new(StringComparer.OrdinalIgnoreCase)
     {
         { "FirstName", new[] { "firstname", "first_name", "givenname", "given_name", "nom", "Nom" } },
@@ -39,210 +50,218 @@ public class ImportService(IEmployeeRepository employeeRepository,
     };
 
     public async Task<ImportResultDto> ImportEmployeesAsync(Stream fileStream, 
-                                                            string fileName, 
-                                                            ImportDuplicateBehavior behavior = ImportDuplicateBehavior.Update, 
-                                                            CancellationToken cancellationToken = default)
-    {
-        var result = new ImportResultDto();
-        var ext = Path.GetExtension(fileName)?.ToLowerInvariant() ?? string.Empty;
-
-        if (ext == ".csv")
+                                                                string fileName, 
+                                                                ImportDuplicateBehavior behavior = ImportDuplicateBehavior.Update, 
+                                                                CancellationToken cancellationToken = default)
         {
-            using var reader = new StreamReader(fileStream);
-            using var csv = new CsvReader(reader, CultureInfo.InvariantCulture);
-            csv.Read();
-            csv.ReadHeader();
-            var headerRecord = csv.HeaderRecord ?? Array.Empty<string>();
-            var headerMap = BuildHeaderMap(headerRecord, EmployeeHeaderAliases);
-            var row = 1;
-
-            while (csv.Read())
+            var result = new ImportResultDto();
+            var ext = Path.GetExtension(fileName)?.ToLowerInvariant() ?? string.Empty;
+    
+            if (ext == ".csv")
             {
-                row++;
-                result.Total++;
-                try
+                using var reader = new StreamReader(fileStream);
+                using var csv = new CsvReader(reader, CultureInfo.InvariantCulture);
+                csv.Read();
+                csv.ReadHeader();
+                var headerRecord = csv.HeaderRecord ?? Array.Empty<string>();
+                var headerMap = BuildHeaderMap(headerRecord, EmployeeHeaderAliases);
+                var row = 1;
+    
+                while (csv.Read())
                 {
-                    string GetField(string canonical)
+                    row++;
+                    result.Total++;
+                    try
                     {
-                        if (headerMap.TryGetValue(canonical, out var name) && !string.IsNullOrEmpty(name))
+                        string GetField(string canonical)
                         {
-                            return csv.GetField(name) ?? string.Empty;
+                            if (headerMap.TryGetValue(canonical, out var name) && !string.IsNullOrEmpty(name))
+                            {
+                                return csv.GetField(name) ?? string.Empty;
+                            }
+                            return string.Empty;
                         }
-                        return string.Empty;
-                    }
-
-                    var dto = new EmployeeCreateDto
-                    {
-                        FirstName = GetField("FirstName"),
-                        LastName = GetField("LastName"),
-                        Email = GetField("Email"),
-                        PhoneNumber = GetField("PhoneNumber"),
-                        Address = GetField("Address"),
-                        Position = GetField("Position"),
-                        Salary = decimal.TryParse(GetField("Salary"), NumberStyles.Any, CultureInfo.InvariantCulture, out var s) ? s : 0m,
-                        HireDate = DateTime.TryParse(GetField("HireDate"), out var d) ? d : DateTime.MinValue,
-                        IsActive = bool.TryParse(GetField("IsActive"), out var b) ? b : true,
-                        DepartmentId = int.TryParse(GetField("DepartmentId"), out var did) ? did : 0,
-                        DepartmentName = GetField("DepartmentName"),
-                        DepartmentCode = GetField("DepartmentCode")
-                    };
-
-                    if (string.IsNullOrWhiteSpace(dto.Email))
-                    {
-                        result.Failed++;
-                        result.Records.Add(new ImportRecordResultDto { 
-                            RowNumber = row, Success = false,
-                            Message = "Missing email",
-                            RawData = csv.Parser.RawRecord
-                        });
-                        continue;
-                    }
-
-                    var existing = await employeeRepository.GetByEmailAsync(dto.Email, cancellationToken);
-                    if (existing != null)
-                    {
-                        if (behavior == ImportDuplicateBehavior.Skip)
+    
+                        var dto = new EmployeeCreateDto
                         {
-                            result.Skipped++;
-                            result.Records.Add(new ImportRecordResultDto { 
+                            FirstName = GetField("FirstName"),
+                            LastName = GetField("LastName"),
+                            Email = GetField("Email"),
+                            PhoneNumber = GetField("PhoneNumber"),
+                            Address = GetField("Address"),
+                            Position = GetField("Position"),
+                            Salary = decimal.TryParse(GetField("Salary"), NumberStyles.Any, CultureInfo.InvariantCulture, out var s) ? s : 0m,
+                            HireDate = DateTime.TryParse(GetField("HireDate"), out var d) ? d : DateTime.MinValue,
+                            IsActive = bool.TryParse(GetField("IsActive"), out var b) ? b : true,
+                            DepartmentId = int.TryParse(GetField("DepartmentId"), out var did) ? (int?)did : null,
+                            DepartmentName = GetField("DepartmentName"),
+                            DepartmentCode = GetField("DepartmentCode")
+                        };
+    
+                        if (string.IsNullOrWhiteSpace(dto.Email))
+                        {
+                            result.Failed++;
+                            result.Records.Add(new ImportRecordResultDto {
+                                RowNumber = row, Success = false,
+                                Message = "Missing email",
+                                RawData = csv.Parser.RawRecord ?? string.Empty
+                            });
+                            continue;
+                        }
+    
+                        var existing = await employeeRepository.GetByEmailAsync(dto.Email, cancellationToken);
+                        if (existing != null)
+                        {
+                            if (behavior == ImportDuplicateBehavior.Skip)
+                            {
+                                result.Skipped++;
+                                result.Records.Add(new ImportRecordResultDto {
+                                    RowNumber = row, Success = true,
+                                    Message = "Skipped",
+                                    RawData = csv.Parser.RawRecord ?? string.Empty
+                                });
+                            }
+                            else
+                            {
+                                await EnsureAndMapDepartmentAsync(dto, existing, departmentRepository, mapper, cancellationToken);
+                                mapper.Map(dto, existing);
+                                existing.UpdatedAt = DateTime.UtcNow;
+                                await employeeRepository.UpdateAsync(existing, cancellationToken);
+                                result.Updated++;
+                                result.Records.Add(new ImportRecordResultDto {
+                                    RowNumber = row, Success = true, Message = "Updated",
+                                    RawData = csv.Parser.RawRecord ?? string.Empty
+                                });
+                            }
+                        }
+                        else
+                        {
+                            int assignedDeptId = await ResolveOrCreateDepartmentForDtoAsync(dto, departmentRepository, mapper, cancellationToken);
+                            if (assignedDeptId > 0) dto.DepartmentId = assignedDeptId;
+    
+                            var entity = mapper.Map<Employee>(dto);
+                            entity.CreatedAt = DateTime.UtcNow;
+                            entity.UpdatedAt = DateTime.UtcNow;
+                            await employeeRepository.AddAsync(entity, cancellationToken);
+                            result.Created++;
+                            result.Records.Add(new ImportRecordResultDto {
                                 RowNumber = row, Success = true,
-                                Message = "Skipped",
-                                RawData = csv.Parser.RawRecord
-                            });
-                        }
-                        else
-                        {
-                            await EnsureAndMapDepartmentAsync(dto, existing, departmentRepository, mapper, cancellationToken);
-                            mapper.Map(dto, existing);
-                            existing.UpdatedAt = DateTime.UtcNow;
-                            await employeeRepository.UpdateAsync(existing, cancellationToken);
-                            result.Updated++;
-                            result.Records.Add(new ImportRecordResultDto { 
-                                RowNumber = row, Success = true, Message = "Updated",
-                                RawData = csv.Parser.RawRecord
+                                Message = "Created",
+                                RawData = csv.Parser.RawRecord ?? string.Empty
                             });
                         }
                     }
-                    else
-                    {
-                        int assignedDeptId = await ResolveOrCreateDepartmentForDtoAsync(dto, departmentRepository, mapper, cancellationToken);
-                        if (assignedDeptId > 0) dto.DepartmentId = assignedDeptId;
-
-                        var entity = mapper.Map<Employee>(dto);
-                        entity.CreatedAt = DateTime.UtcNow;
-                        entity.UpdatedAt = DateTime.UtcNow;
-                        await employeeRepository.AddAsync(entity, cancellationToken);
-                        result.Created++;
-                        result.Records.Add(new ImportRecordResultDto { 
-                            RowNumber = row, Success = true,
-                            Message = "Created",
-                            RawData = csv.Parser.RawRecord
-                        });
-                    }
-                }
-                catch (Exception ex)
-                {
-                    result.Failed++;
-                    result.Records.Add(new ImportRecordResultDto { RowNumber = row, Success = false, Message = ex.Message });
-                }
-            }
-        }
-        else if (ext == ".xlsx" || ext == ".xls")
-        {
-            using var workbook = new XLWorkbook(fileStream);
-            var ws = workbook.Worksheets.First();
-            var headerRow = ws.Row(1);
-            var headers = new Dictionary<string, int>(StringComparer.OrdinalIgnoreCase);
-
-            for (var c = 1; c <= headerRow.LastCellUsed().Address.ColumnNumber; c++)
-            {
-                var h = headerRow.Cell(c).GetString().Trim();
-                if (!string.IsNullOrEmpty(h) && !headers.ContainsKey(h)) headers[h] = c;
-            }
-
-            var headerMap = BuildHeaderMap(headers.Keys.ToArray(), EmployeeHeaderAliases);
-
-            int row = 1;
-            for (int r = 2; r <= ws.LastRowUsed().RowNumber(); r++)
-            {
-                row = r;
-                result.Total++;
-                try
-                {
-                    string GetByCanonical(string canonical)
-                        => headerMap.TryGetValue(canonical, out var name) && 
-                           headers.TryGetValue(name, out var idx) 
-                           ? ws.Row(r).Cell(idx).GetString() 
-                           : string.Empty;
-
-                    var dto = new EmployeeCreateDto
-                    {
-                        FirstName = GetByCanonical("FirstName"),
-                        LastName = GetByCanonical("LastName"),
-                        Email = GetByCanonical("Email"),
-                        PhoneNumber = GetByCanonical("PhoneNumber"),
-                        Address = GetByCanonical("Address"),
-                        Position = GetByCanonical("Position"),
-                        Salary = decimal.TryParse(GetByCanonical("Salary"), NumberStyles.Any, CultureInfo.InvariantCulture, out var s) ? s : 0m,
-                        HireDate = DateTime.TryParse(GetByCanonical("HireDate"), out var d) ? d : DateTime.MinValue,
-                        IsActive = bool.TryParse(GetByCanonical("IsActive"), out var b) ? b : true,
-                        DepartmentId = int.TryParse(GetByCanonical("DepartmentId"), out var did) ? did : 0,
-                        DepartmentName = GetByCanonical("DepartmentName"),
-                        DepartmentCode = GetByCanonical("DepartmentCode")
-                    };
-
-                    if (string.IsNullOrWhiteSpace(dto.Email))
+                    catch (Exception ex)
                     {
                         result.Failed++;
-                        result.Records.Add(new ImportRecordResultDto { RowNumber = row, Success = false, Message = "Missing email" });
-                        continue;
+                        result.Records.Add(new ImportRecordResultDto { RowNumber = row, Success = false, Message = ex.Message });
                     }
-
-                    var existing = await employeeRepository.GetByEmailAsync(dto.Email, cancellationToken);
-                    if (existing != null)
-                    {
-                        if (behavior == ImportDuplicateBehavior.Skip)
-                        {
-                            result.Skipped++;
-                            result.Records.Add(new ImportRecordResultDto { RowNumber = row, Success = true, Message = "Skipped" });
-                        }
-                        else
-                        {
-                            await EnsureAndMapDepartmentAsync(dto, existing, departmentRepository, mapper, cancellationToken);
-                            mapper.Map(dto, existing);
-                            existing.UpdatedAt = DateTime.UtcNow;
-                            await employeeRepository.UpdateAsync(existing, cancellationToken);
-                            result.Updated++;
-                            result.Records.Add(new ImportRecordResultDto { RowNumber = row, Success = true, Message = "Updated" });
-                        }
-                    }
-                    else
-                    {
-                        var assignedDeptId = await ResolveOrCreateDepartmentForDtoAsync(dto, departmentRepository, mapper, cancellationToken);
-                        if (assignedDeptId > 0) dto.DepartmentId = assignedDeptId;
-
-                        var entity = mapper.Map<Employee>(dto);
-                        entity.CreatedAt = DateTime.UtcNow;
-                        entity.UpdatedAt = DateTime.UtcNow;
-                        await employeeRepository.AddAsync(entity, cancellationToken);
-                        result.Created++;
-                        result.Records.Add(new ImportRecordResultDto { RowNumber = row, Success = true, Message = "Created" });
-                    }
-                }
-                catch (Exception ex)
-                {
-                    result.Failed++;
-                    result.Records.Add(new ImportRecordResultDto { RowNumber = row, Success = false, Message = ex.Message });
                 }
             }
+            else if (ext == ".xlsx" || ext == ".xls")
+            {
+                using var workbook = new XLWorkbook(fileStream);
+                var ws = workbook.Worksheets.First();
+                var headerRow = ws.Row(1);
+                var headers = new Dictionary<string, int>(StringComparer.OrdinalIgnoreCase);
+    
+                var lastHeaderCell = headerRow.LastCellUsed();
+                if (lastHeaderCell != null)
+                {
+                    for (var c = 1; c <= lastHeaderCell.Address.ColumnNumber; c++)
+                    {
+                        var h = headerRow.Cell(c).GetString().Trim();
+                        if (!string.IsNullOrEmpty(h) && !headers.ContainsKey(h)) headers[h] = c;
+                    }
+                }
+    
+                var headerMap = BuildHeaderMap(headers.Keys.ToArray(), EmployeeHeaderAliases);
+    
+                int row = 1;
+                var lastRowUsed = ws.LastRowUsed();
+                if (lastRowUsed != null)
+                {
+                    for (int r = 2; r <= lastRowUsed.RowNumber(); r++)
+                    {
+                        row = r;
+                        result.Total++;
+                        try
+                        {
+                            string GetByCanonical(string canonical)
+                                => headerMap.TryGetValue(canonical, out var name) && 
+                                   headers.TryGetValue(name, out var idx) 
+                                   ? ws.Row(r).Cell(idx).GetString() 
+                                   : string.Empty;
+    
+                            var dto = new EmployeeCreateDto
+                            {
+                                FirstName = GetByCanonical("FirstName"),
+                                LastName = GetByCanonical("LastName"),
+                                Email = GetByCanonical("Email"),
+                                PhoneNumber = GetByCanonical("PhoneNumber"),
+                                Address = GetByCanonical("Address"),
+                                Position = GetByCanonical("Position"),
+                                Salary = decimal.TryParse(GetByCanonical("Salary"), NumberStyles.Any, CultureInfo.InvariantCulture, out var s) ? s : 0m,
+                                HireDate = DateTime.TryParse(GetByCanonical("HireDate"), out var d) ? d : DateTime.MinValue,
+                                IsActive = bool.TryParse(GetByCanonical("IsActive"), out var b) ? b : true,
+                                DepartmentId = int.TryParse(GetByCanonical("DepartmentId"), out var did) ? (int?)did : null,
+                                DepartmentName = GetByCanonical("DepartmentName"),
+                                DepartmentCode = GetByCanonical("DepartmentCode")
+                            };
+    
+                            if (string.IsNullOrWhiteSpace(dto.Email))
+                            {
+                                result.Failed++;
+                                result.Records.Add(new ImportRecordResultDto { RowNumber = row, Success = false, Message = "Missing email" });
+                                continue;
+                            }
+    
+                            var existing = await employeeRepository.GetByEmailAsync(dto.Email, cancellationToken);
+                            if (existing != null)
+                            {
+                                if (behavior == ImportDuplicateBehavior.Skip)
+                                {
+                                    result.Skipped++;
+                                    result.Records.Add(new ImportRecordResultDto { RowNumber = row, Success = true, Message = "Skipped" });
+                                }
+                                else
+                                {
+                                    await EnsureAndMapDepartmentAsync(dto, existing, departmentRepository, mapper, cancellationToken);
+                                    mapper.Map(dto, existing);
+                                    existing.UpdatedAt = DateTime.UtcNow;
+                                    await employeeRepository.UpdateAsync(existing, cancellationToken);
+                                    result.Updated++;
+                                    result.Records.Add(new ImportRecordResultDto { RowNumber = row, Success = true, Message = "Updated" });
+                                }
+                            }
+                            else
+                            {
+                                var assignedDeptId = await ResolveOrCreateDepartmentForDtoAsync(dto, departmentRepository, mapper, cancellationToken);
+                                if (assignedDeptId > 0) dto.DepartmentId = assignedDeptId;
+    
+                                var entity = mapper.Map<Employee>(dto);
+                                entity.CreatedAt = DateTime.UtcNow;
+                                entity.UpdatedAt = DateTime.UtcNow;
+                                await employeeRepository.AddAsync(entity, cancellationToken);
+                                result.Created++;
+                                result.Records.Add(new ImportRecordResultDto { RowNumber = row, Success = true, Message = "Created" });
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            result.Failed++;
+                            result.Records.Add(new ImportRecordResultDto { RowNumber = row, Success = false, Message = ex.Message });
+                        }
+                    }
+                }
+            }
+            else
+            {
+                throw new NotSupportedException("Only .csv and .xlsx/.xls files are supported");
+            }
+    
+            return result;
         }
-        else
-        {
-            throw new NotSupportedException("Only .csv and .xlsx/.xls files are supported");
-        }
-
-        return result;
-    }
 
     private static Dictionary<string, string> BuildHeaderMap(string[] headers, Dictionary<string,string[]> aliases)
     {
@@ -271,20 +290,20 @@ public class ImportService(IEmployeeRepository employeeRepository,
 
     private async Task<int> ResolveOrCreateDepartmentForDtoAsync(EmployeeCreateDto dto, IDepartmentRepository deptRepo, IMapper mapper, CancellationToken cancellationToken)
     {
-        if (dto.DepartmentId > 0)
+        if (dto.DepartmentId.HasValue && dto.DepartmentId.Value > 0)
         {
-            var dep = await deptRepo.GetByIdAsync(dto.DepartmentId, cancellationToken);
+            var dep = await deptRepo.GetByIdAsync(dto.DepartmentId.Value, cancellationToken);
             if (dep != null) return dep.Id;
 
             var create = new DepartmentCreateDto
             {
-                Name = string.IsNullOrWhiteSpace(dto.DepartmentName) ? $"Imported Dept {dto.DepartmentId}" : dto.DepartmentName,
-                Code = string.IsNullOrWhiteSpace(dto.DepartmentCode) ? $"IMP-{dto.DepartmentId}" : dto.DepartmentCode,
+                Name = string.IsNullOrWhiteSpace(dto.DepartmentName) ? $"Imported Dept {dto.DepartmentId.Value}" : dto.DepartmentName,
+                Code = string.IsNullOrWhiteSpace(dto.DepartmentCode) ? $"IMP-{dto.DepartmentId.Value}" : dto.DepartmentCode,
                 Description = string.Empty
             };
 
             var entity = mapper.Map<Department>(create);
-            entity.CreatedAt = DateTime.UtcNow; 
+            entity.CreatedAt = DateTime.UtcNow;
             entity.UpdatedAt = DateTime.UtcNow;
             await deptRepo.AddAsync(entity, cancellationToken);
             return entity.Id;
@@ -333,20 +352,20 @@ public class ImportService(IEmployeeRepository employeeRepository,
 
     private async Task EnsureAndMapDepartmentAsync(EmployeeCreateDto dto, Employee existing, IDepartmentRepository deptRepo, IMapper mapper, CancellationToken cancellationToken)
     {
-        if (dto.DepartmentId > 0)
+        if (dto.DepartmentId.HasValue && dto.DepartmentId.Value > 0)
         {
-            var dep = await deptRepo.GetByIdAsync(dto.DepartmentId, cancellationToken);
+            var dep = await deptRepo.GetByIdAsync(dto.DepartmentId.Value, cancellationToken);
             if (dep != null) { existing.DepartmentId = dep.Id; return; }
 
-            var create = new DepartmentCreateDto 
-            { 
-                Name = dto.DepartmentName ?? $"Imported Dept {dto.DepartmentId}", 
-                Code = dto.DepartmentCode ?? $"IMP-{dto.DepartmentId}", 
-                Description = string.Empty 
+            var create = new DepartmentCreateDto
+            {
+                Name = dto.DepartmentName ?? $"Imported Dept {dto.DepartmentId.Value}",
+                Code = dto.DepartmentCode ?? $"IMP-{dto.DepartmentId.Value}",
+                Description = string.Empty
             };
 
             var entity = mapper.Map<Department>(create);
-            entity.CreatedAt = DateTime.UtcNow; 
+            entity.CreatedAt = DateTime.UtcNow;
             entity.UpdatedAt = DateTime.UtcNow;
             await deptRepo.AddAsync(entity, cancellationToken);
             existing.DepartmentId = entity.Id;
@@ -432,9 +451,9 @@ public class ImportService(IEmployeeRepository employeeRepository,
                     if (string.IsNullOrWhiteSpace(dto.Name))
                     {
                         result.Failed++;
-                        result.Records.Add(new ImportRecordResultDto { 
+                        result.Records.Add(new ImportRecordResultDto {
                             RowNumber = row, Success = false, Message = "Missing name",
-                            RawData = csv.Parser.RawRecord
+                            RawData = csv.Parser.RawRecord ?? string.Empty
                         });
                         continue;
                     }
@@ -449,7 +468,7 @@ public class ImportService(IEmployeeRepository employeeRepository,
                             result.Skipped++;
                             result.Records.Add(new ImportRecordResultDto {
                                 RowNumber = row, Success = true, Message = "Skipped",
-                                RawData = csv.Parser.RawRecord
+                                RawData = csv.Parser.RawRecord ?? string.Empty
                             });
                         }
                         else
@@ -460,7 +479,7 @@ public class ImportService(IEmployeeRepository employeeRepository,
                             result.Updated++;
                             result.Records.Add(new ImportRecordResultDto {
                                 RowNumber = row, Success = true, Message = "Updated",
-                                RawData = csv.Parser.RawRecord
+                                RawData = csv.Parser.RawRecord ?? string.Empty
                             });
                         }
                     }
@@ -471,9 +490,9 @@ public class ImportService(IEmployeeRepository employeeRepository,
                         entity.UpdatedAt = DateTime.UtcNow;
                         await departmentRepository.AddAsync(entity, cancellationToken);
                         result.Created++;
-                        result.Records.Add(new ImportRecordResultDto { 
+                        result.Records.Add(new ImportRecordResultDto {
                             RowNumber = row, Success = true, Message = "Created",
-                            RawData = csv.Parser.RawRecord
+                            RawData = csv.Parser.RawRecord ?? string.Empty
                         });
                     }
                 }
@@ -491,16 +510,23 @@ public class ImportService(IEmployeeRepository employeeRepository,
             var headerRow = ws.Row(1);
             var headers = new Dictionary<string, int>(StringComparer.OrdinalIgnoreCase);
 
-            for (int c = 1; c <= headerRow.LastCellUsed().Address.ColumnNumber; c++)
+            var lastHeaderCell2 = headerRow.LastCellUsed();
+            if (lastHeaderCell2 != null)
             {
-                var h = headerRow.Cell(c).GetString().Trim();
-                if (!string.IsNullOrEmpty(h) && !headers.ContainsKey(h)) headers[h] = c;
+                for (int c = 1; c <= lastHeaderCell2.Address.ColumnNumber; c++)
+                {
+                    var h = headerRow.Cell(c).GetString().Trim();
+                    if (!string.IsNullOrEmpty(h) && !headers.ContainsKey(h)) headers[h] = c;
+                }
             }
 
             var headerMap = BuildHeaderMap(headers.Keys.ToArray(), DepartmentHeaderAliases);
 
-            for (int r = 2; r <= ws.LastRowUsed().RowNumber(); r++)
+            var lastRowUsed2 = ws.LastRowUsed();
+            if (lastRowUsed2 != null)
             {
+                for (int r = 2; r <= lastRowUsed2.RowNumber(); r++)
+                {
                 result.Total++;
                 try
                 {
@@ -558,5 +584,6 @@ public class ImportService(IEmployeeRepository employeeRepository,
         }
 
         return result;
+    }
     }
 }
