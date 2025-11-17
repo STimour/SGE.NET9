@@ -1,4 +1,5 @@
 using SGE.Application.DTO.Attendances;
+using SGE.Application.DTOs.Attendances;
 
 namespace SGE.Application.Interfaces.IServices;
 

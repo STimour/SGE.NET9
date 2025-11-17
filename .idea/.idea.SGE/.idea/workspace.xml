@@ -9,7 +9,152 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3104b775-265e-4b03-84c3-9f5e734814c7" name="Changes" comment="" />
+    <list default="true" id="3104b775-265e-4b03-84c3-9f5e734814c7" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.SGE/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.SGE/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.API/SGE.API.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/SGE.API/SGE.API.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.API/SGE.API.http" beforeDir="false" afterPath="$PROJECT_DIR$/SGE.API/SGE.API.http" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.API/bin/Debug/net9.0/AutoMapper.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.API/bin/Debug/net9.0/Humanizer.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.API/bin/Debug/net9.0/Microsoft.AspNetCore.OpenApi.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.API/bin/Debug/net9.0/Microsoft.Bcl.AsyncInterfaces.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.API/bin/Debug/net9.0/Microsoft.Build.Locator.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.API/bin/Debug/net9.0/Microsoft.CodeAnalysis.CSharp.Workspaces.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.API/bin/Debug/net9.0/Microsoft.CodeAnalysis.CSharp.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.API/bin/Debug/net9.0/Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.API/bin/Debug/net9.0/Microsoft.CodeAnalysis.Workspaces.MSBuild.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.API/bin/Debug/net9.0/Microsoft.CodeAnalysis.Workspaces.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.API/bin/Debug/net9.0/Microsoft.CodeAnalysis.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.API/bin/Debug/net9.0/Microsoft.EntityFrameworkCore.Abstractions.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.API/bin/Debug/net9.0/Microsoft.EntityFrameworkCore.Design.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.API/bin/Debug/net9.0/Microsoft.EntityFrameworkCore.Relational.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.API/bin/Debug/net9.0/Microsoft.EntityFrameworkCore.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.API/bin/Debug/net9.0/Microsoft.Extensions.Caching.Abstractions.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.API/bin/Debug/net9.0/Microsoft.Extensions.Caching.Memory.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.API/bin/Debug/net9.0/Microsoft.Extensions.Configuration.Abstractions.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.API/bin/Debug/net9.0/Microsoft.Extensions.DependencyInjection.Abstractions.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.API/bin/Debug/net9.0/Microsoft.Extensions.DependencyInjection.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.API/bin/Debug/net9.0/Microsoft.Extensions.DependencyModel.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.API/bin/Debug/net9.0/Microsoft.Extensions.Logging.Abstractions.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.API/bin/Debug/net9.0/Microsoft.Extensions.Logging.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.API/bin/Debug/net9.0/Microsoft.Extensions.Options.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.API/bin/Debug/net9.0/Microsoft.Extensions.Primitives.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.API/bin/Debug/net9.0/Microsoft.IdentityModel.Abstractions.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.API/bin/Debug/net9.0/Microsoft.IdentityModel.JsonWebTokens.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.API/bin/Debug/net9.0/Microsoft.IdentityModel.Logging.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.API/bin/Debug/net9.0/Microsoft.IdentityModel.Tokens.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.API/bin/Debug/net9.0/Microsoft.OpenApi.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.API/bin/Debug/net9.0/Mono.TextTemplating.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.API/bin/Debug/net9.0/Npgsql.EntityFrameworkCore.PostgreSQL.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.API/bin/Debug/net9.0/Npgsql.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.API/bin/Debug/net9.0/SGE.API" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.API/bin/Debug/net9.0/SGE.API.deps.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.API/bin/Debug/net9.0/SGE.API.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.API/bin/Debug/net9.0/SGE.API.pdb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.API/bin/Debug/net9.0/SGE.API.runtimeconfig.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.API/bin/Debug/net9.0/SGE.API.staticwebassets.endpoints.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.API/bin/Debug/net9.0/SGE.Application.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.API/bin/Debug/net9.0/SGE.Application.pdb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.API/bin/Debug/net9.0/SGE.Core.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.API/bin/Debug/net9.0/SGE.Core.pdb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.API/bin/Debug/net9.0/SGE.Infrastructure.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.API/bin/Debug/net9.0/SGE.Infrastructure.pdb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.API/bin/Debug/net9.0/System.CodeDom.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.API/bin/Debug/net9.0/System.Composition.AttributedModel.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.API/bin/Debug/net9.0/System.Composition.Convention.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.API/bin/Debug/net9.0/System.Composition.Hosting.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.API/bin/Debug/net9.0/System.Composition.Runtime.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.API/bin/Debug/net9.0/System.Composition.TypedParts.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.API/bin/Debug/net9.0/System.Text.Json.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.API/bin/Debug/net9.0/appsettings.Development.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.API/bin/Debug/net9.0/appsettings.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.API/bin/Debug/net9.0/cs/Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.API/bin/Debug/net9.0/cs/Microsoft.CodeAnalysis.CSharp.resources.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.API/bin/Debug/net9.0/cs/Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.API/bin/Debug/net9.0/cs/Microsoft.CodeAnalysis.Workspaces.resources.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.API/bin/Debug/net9.0/cs/Microsoft.CodeAnalysis.resources.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.API/bin/Debug/net9.0/de/Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.API/bin/Debug/net9.0/de/Microsoft.CodeAnalysis.CSharp.resources.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.API/bin/Debug/net9.0/de/Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.API/bin/Debug/net9.0/de/Microsoft.CodeAnalysis.Workspaces.resources.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.API/bin/Debug/net9.0/de/Microsoft.CodeAnalysis.resources.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.API/bin/Debug/net9.0/es/Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.API/bin/Debug/net9.0/es/Microsoft.CodeAnalysis.CSharp.resources.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.API/bin/Debug/net9.0/es/Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.API/bin/Debug/net9.0/es/Microsoft.CodeAnalysis.Workspaces.resources.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.API/bin/Debug/net9.0/es/Microsoft.CodeAnalysis.resources.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.API/bin/Debug/net9.0/fr/Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.API/bin/Debug/net9.0/fr/Microsoft.CodeAnalysis.CSharp.resources.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.API/bin/Debug/net9.0/fr/Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.API/bin/Debug/net9.0/fr/Microsoft.CodeAnalysis.Workspaces.resources.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.API/bin/Debug/net9.0/fr/Microsoft.CodeAnalysis.resources.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.API/bin/Debug/net9.0/it/Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.API/bin/Debug/net9.0/it/Microsoft.CodeAnalysis.CSharp.resources.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.API/bin/Debug/net9.0/it/Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.API/bin/Debug/net9.0/it/Microsoft.CodeAnalysis.Workspaces.resources.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.API/bin/Debug/net9.0/it/Microsoft.CodeAnalysis.resources.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.API/bin/Debug/net9.0/ja/Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.API/bin/Debug/net9.0/ja/Microsoft.CodeAnalysis.CSharp.resources.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.API/bin/Debug/net9.0/ja/Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.API/bin/Debug/net9.0/ja/Microsoft.CodeAnalysis.Workspaces.resources.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.API/bin/Debug/net9.0/ja/Microsoft.CodeAnalysis.resources.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.API/bin/Debug/net9.0/ko/Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.API/bin/Debug/net9.0/ko/Microsoft.CodeAnalysis.CSharp.resources.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.API/bin/Debug/net9.0/ko/Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.API/bin/Debug/net9.0/ko/Microsoft.CodeAnalysis.Workspaces.resources.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.API/bin/Debug/net9.0/ko/Microsoft.CodeAnalysis.resources.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.API/bin/Debug/net9.0/pl/Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.API/bin/Debug/net9.0/pl/Microsoft.CodeAnalysis.CSharp.resources.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.API/bin/Debug/net9.0/pl/Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.API/bin/Debug/net9.0/pl/Microsoft.CodeAnalysis.Workspaces.resources.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.API/bin/Debug/net9.0/pl/Microsoft.CodeAnalysis.resources.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.API/bin/Debug/net9.0/pt-BR/Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.API/bin/Debug/net9.0/pt-BR/Microsoft.CodeAnalysis.CSharp.resources.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.API/bin/Debug/net9.0/pt-BR/Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.API/bin/Debug/net9.0/pt-BR/Microsoft.CodeAnalysis.Workspaces.resources.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.API/bin/Debug/net9.0/pt-BR/Microsoft.CodeAnalysis.resources.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.API/bin/Debug/net9.0/ru/Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.API/bin/Debug/net9.0/ru/Microsoft.CodeAnalysis.CSharp.resources.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.API/bin/Debug/net9.0/ru/Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.API/bin/Debug/net9.0/ru/Microsoft.CodeAnalysis.Workspaces.resources.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.API/bin/Debug/net9.0/ru/Microsoft.CodeAnalysis.resources.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.API/bin/Debug/net9.0/tr/Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.API/bin/Debug/net9.0/tr/Microsoft.CodeAnalysis.CSharp.resources.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.API/bin/Debug/net9.0/tr/Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.API/bin/Debug/net9.0/tr/Microsoft.CodeAnalysis.Workspaces.resources.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.API/bin/Debug/net9.0/tr/Microsoft.CodeAnalysis.resources.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.API/bin/Debug/net9.0/zh-Hans/Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.API/bin/Debug/net9.0/zh-Hans/Microsoft.CodeAnalysis.CSharp.resources.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.API/bin/Debug/net9.0/zh-Hans/Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.API/bin/Debug/net9.0/zh-Hans/Microsoft.CodeAnalysis.Workspaces.resources.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.API/bin/Debug/net9.0/zh-Hans/Microsoft.CodeAnalysis.resources.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.API/bin/Debug/net9.0/zh-Hant/Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.API/bin/Debug/net9.0/zh-Hant/Microsoft.CodeAnalysis.CSharp.resources.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.API/bin/Debug/net9.0/zh-Hant/Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.API/bin/Debug/net9.0/zh-Hant/Microsoft.CodeAnalysis.Workspaces.resources.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.API/bin/Debug/net9.0/zh-Hant/Microsoft.CodeAnalysis.resources.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.Application/DTO/Employee/EmployeeUpdateDto.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SGE.Application/DTO/Employee/EmployeeUpdateDto.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.Application/Interfaces/IRepositories/IAttendanceRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SGE.Application/Interfaces/IRepositories/IAttendanceRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.Application/Interfaces/IServices/IAttendanceService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SGE.Application/Interfaces/IServices/IAttendanceService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.Application/Services/AttendaceService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SGE.Application/Services/AttendaceService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.Application/Services/ImportService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SGE.Application/Services/ImportService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.Application/bin/Debug/net9.0/SGE.Application.deps.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.Application/bin/Debug/net9.0/SGE.Application.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.Application/bin/Debug/net9.0/SGE.Application.pdb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.Application/bin/Debug/net9.0/SGE.Core.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.Application/bin/Debug/net9.0/SGE.Core.pdb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.Core/bin/Debug/net9.0/SGE.Core.dll" beforeDir="false" afterPath="$PROJECT_DIR$/SGE.Core/bin/Debug/net9.0/SGE.Core.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.Core/bin/Debug/net9.0/SGE.Core.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/SGE.Core/bin/Debug/net9.0/SGE.Core.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.Infrastructure/Repositories/AttendanceRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SGE.Infrastructure/Repositories/AttendanceRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.Infrastructure/SGE.Infrastructure.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/SGE.Infrastructure/SGE.Infrastructure.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.Infrastructure/bin/Debug/net9.0/SGE.Application.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.Infrastructure/bin/Debug/net9.0/SGE.Application.pdb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.Infrastructure/bin/Debug/net9.0/SGE.Core.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.Infrastructure/bin/Debug/net9.0/SGE.Core.pdb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.Infrastructure/bin/Debug/net9.0/SGE.Infrastructure.deps.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.Infrastructure/bin/Debug/net9.0/SGE.Infrastructure.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.Infrastructure/bin/Debug/net9.0/SGE.Infrastructure.pdb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.Infrastructure/bin/Debug/net9.0/SGE.Infrastructure.runtimeconfig.json" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -44,8 +189,12 @@
     <setting file="file://$PROJECT_DIR$/SGE.Infrastructure/Repositories/EmployeeRepository.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/SGE.Infrastructure/Repositories/Repository.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
+  <component name="KubernetesApiPersistence">{}</component>
+  <component name="KubernetesApiProvider">{
+  &quot;isMigrated&quot;: true
+}</component>
   <component name="ProblemsViewState">
-    <option name="selectedTabId" value="CurrentFile" />
+    <option name="selectedTabId" value="Toolset" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 1
@@ -58,24 +207,28 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Docker.SGE.API/Dockerfile.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.compose.yaml.sge.postgres: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.compose.yaml: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Docker.SGE.API/Dockerfile.executor": "Run",
+    "Docker.compose.yaml.sge.postgres: Compose Deployment.executor": "Run",
+    "Docker.compose.yaml: Compose Deployment.executor": "Run",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "main",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "CodeInspectionSettingsId",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
+  <component name="RiderProblemsViewState">
+    <option name="proportion" value="0.5422031" />
+  </component>
   <component name="RunManager" selected="Docker.compose.yaml: Compose Deployment">
     <configuration name="SGE.API: http" type="LaunchSettings" factoryName=".NET Launch Settings Profile">
       <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/SGE.API/SGE.API.csproj" />
@@ -196,6 +349,9 @@
       <workItem from="1761247213485" duration="4367000" />
       <workItem from="1761403420925" duration="6056000" />
       <workItem from="1761475019701" duration="5830000" />
+      <workItem from="1762534415252" duration="1379000" />
+      <workItem from="1763155049250" duration="207000" />
+      <workItem from="1763233799256" duration="7151000" />
     </task>
     <servers />
   </component>
@@ -203,6 +359,17 @@
     <option name="version" value="3" />
   </component>
   <component name="UnityProjectConfiguration" hasMinimizedUI="false" />
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
   </component>

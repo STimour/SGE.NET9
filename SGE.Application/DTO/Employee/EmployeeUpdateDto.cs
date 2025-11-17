@@ -13,6 +13,11 @@ public class EmployeeUpdateDto
     public string LastName { get; set; } = string.Empty;
     
     /// <summary>
+    /// Gets or sets the email address of the employee.
+    /// </summary>
+    public string Email { get; set; } = string.Empty;
+    
+    /// <summary>
     /// Gets or sets the phone number of the employee.
     /// </summary>
     public string PhoneNumber { get; set; } = string.Empty;

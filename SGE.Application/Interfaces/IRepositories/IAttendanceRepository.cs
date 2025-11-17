@@ -1,4 +1,6 @@
+using SGE.Application.Interfaces.IRepositories;
 using SGE.Core.Entities;
+
 namespace SGE.Application.Interfaces.Repositories;
 
 /// <summary>

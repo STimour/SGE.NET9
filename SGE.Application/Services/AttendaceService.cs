@@ -1,11 +1,13 @@
 using AutoMapper;
 using SGE.Application.DTOs.Attendances;
 using SGE.Application.Interfaces.Repositories;
-using SGE.Application.Interfaces.Services;
 using SGE.Core.Entities;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using SGE.Application.DTO.Attendances;
+using SGE.Application.Interfaces.IRepositories;
+using SGE.Application.Interfaces.IServices;
 
 namespace SGE.Application.services;
 
@@ -268,13 +270,13 @@ public class AttendanceService( IAttendanceRepository attendanceRepository,
     private void CalculateWorkedHours(Attendance attendance)
     {
         if (!attendance.ClockIn.HasValue || !attendance.ClockOut.HasValue)
-        return;
+            return;
         
         var totalWorked = attendance.ClockOut.Value - attendance.ClockIn.Value;
         
         // Soustraire la pause
         if (attendance.BreakDuration.HasValue)
-        totalWorked -= attendance.BreakDuration.Value;
+            totalWorked -= attendance.BreakDuration.Value;
         
         var workedHours = (decimal)totalWorked.TotalHours;
     

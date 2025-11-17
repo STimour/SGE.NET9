@@ -8,22 +8,30 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="9.0.9"/>
-        <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="9.0.10">
-          <PrivateAssets>all</PrivateAssets>
-          <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="9.0.9" />
+
+        <!-- EF Core Design : version corrigée 9.0.11 -->
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="9.0.11">
+            <PrivateAssets>all</PrivateAssets>
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
+
+        <!-- EF Core Tools : version 9.0.11 -->
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="9.0.11">
+            <PrivateAssets>all</PrivateAssets>
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\SGE.Application\SGE.Application.csproj" />
-      <ProjectReference Include="..\SGE.Infrastructure\SGE.Infrastructure.csproj" />
+        <ProjectReference Include="..\SGE.Application\SGE.Application.csproj" />
+        <ProjectReference Include="..\SGE.Infrastructure\SGE.Infrastructure.csproj" />
     </ItemGroup>
 
     <ItemGroup>
-      <Content Include="..\.dockerignore">
-        <Link>.dockerignore</Link>
-      </Content>
+        <Content Include="..\.dockerignore">
+            <Link>.dockerignore</Link>
+        </Content>
     </ItemGroup>
 
 </Project>

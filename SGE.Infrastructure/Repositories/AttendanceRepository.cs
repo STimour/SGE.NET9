@@ -1,11 +1,10 @@
-using Microsoft.EntityFrameworkCore;
 using SGE.Application.Interfaces.Repositories;
 using SGE.Core.Entities;
 using SGE.Infrastructure.Data;
+using Microsoft.EntityFrameworkCore;
 
 namespace SGE.Infrastructure.Repositories;
-
-public class AttendanceRepository : Repositories<Attendace>, IAttendanceRepository
+public class AttendanceRepository : Repository<Attendance>, IAttendanceRepository
 {
     /// <summary>
     /// Defines a repository that provides data access capabilities for Attendance entities.
@@ -19,7 +18,7 @@ public class AttendanceRepository : Repositories<Attendace>, IAttendanceReposito
     /// <param name="employeeId">The unique identifier of the employee whose attendance records are to be fetched.</param>
     /// <param name="cancellationToken">An optional token to monitor for cancellation requests.</param>
     /// <returns>A task representing the asynchronous operation, with a collection of Attendance entities for the specified employee.</returns>
-    Task<IEnumerable<Attendance>> GetByEmployeeAsync(int employeeId, CancellationToken cancellationToken = default)
+    public async Task<IEnumerable<Attendance>> GetByEmployeeAsync(int employeeId, CancellationToken cancellationToken = default)
     {
         return await _dbSet
                         .AsNoTracking()
