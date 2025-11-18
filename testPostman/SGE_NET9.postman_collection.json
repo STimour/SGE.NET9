@@ -1,0 +1,597 @@
+{
+	"info": {
+		"_postman_id": "6ba38319-84ea-46f1-9361-ba8b0d84868a",
+		"name": "SGE_NET9",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "29683385"
+	},
+	"item": [
+		{
+			"name": "Créer un département",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status is 201\", () => pm.response.code === 201);",
+							"pm.test(\"Department created\", () => {",
+							"    const data = pm.response.json();",
+							"    pm.expect(data).to.have.property(\"id\");",
+							"    pm.expect(data.name).to.eql(\"Informatique\");",
+							"});",
+							"",
+							"// On stocke l’ID pour les tests suivants",
+							"pm.collectionVariables.set(\"deptId\", pm.response.json().id);"
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"name\": \"Informatique\",\n  \"code\": \"IT\",\n  \"description\": \"Département des systèmes\"\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/departments",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"departments"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Récupérer tous les départements",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status is 200\", () => pm.response.code === 200);",
+							"pm.test(\"Should return an array\", () => {",
+							"    const data = pm.response.json();",
+							"    pm.expect(data).to.be.an(\"array\");",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/api/departments",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"departments"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Récupérer un département par ID",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status is 200 or 404\", () => ",
+							"    pm.expect([200, 404]).to.include(pm.response.code));",
+							"",
+							"if (pm.response.code === 200) {",
+							"    const data = pm.response.json();",
+							"    pm.test(\"Valid department\", () => {",
+							"        pm.expect(data).to.have.property(\"id\");",
+							"        pm.expect(data).to.have.property(\"name\");",
+							"    });",
+							"}"
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/api/departments/{{deptId}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"departments",
+						"{{deptId}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Mettre à jour un département",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status is 204 or 404\", () => ",
+							"    pm.expect([204, 404]).to.include(pm.response.code));"
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"name\": \"Informatique & Réseaux\",\n  \"code\": \"ITR\",\n  \"description\": \"Département mis à jour\"\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/departments/{{deptId}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"departments",
+						"{{deptId}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Importer un fichier CSV ou XLSX",
+			"request": {
+				"method": "POST",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "Créer un employé",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status 201\", () => pm.response.code === 201);",
+							"",
+							"pm.test(\"Employee created\", () => {",
+							"    const emp = pm.response.json();",
+							"    pm.expect(emp).to.have.property(\"id\");",
+							"    pm.collectionVariables.set(\"employeeId\", emp.id);",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"firstName\": \"John\",\n  \"lastName\": \"Doe\",\n  \"email\": \"john.doe@example.com\",\n  \"phoneNumber\": \"0600000000\",\n  \"isActive\": true,\n  \"address\": \"12 rue Victor Hugo\",\n  \"position\": \"Développeur\",\n  \"salary\": 3600,\n  \"hireDate\": \"2021-09-15\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/employee",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"employee"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Mettre à jour un employé",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status 204 or 404\", () => ",
+							"    pm.expect([204, 404]).to.include(pm.response.code)",
+							");"
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"firstName\": \"John\",\n  \"lastName\": \"Doe\",\n  \"phoneNumber\": \"0601111111\",\n  \"address\": \"Adresse modifiée\",\n  \"position\": \"Senior Dev\",\n  \"salary\": 4200,\n  \"isActive\": true,\n  \"endDate\": null,\n  \"departmentId\": {{deptId}}\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/employee/{{employeeId}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"employee",
+						"{{employeeId}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Récupérer tous les employés",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status 200\", () => pm.response.code === 200);",
+							"",
+							"pm.test(\"Return array\", () => {",
+							"    const data = pm.response.json();",
+							"    pm.expect(data).to.be.an(\"array\");",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/employee",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"employee"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Récupérer un employé par ID",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status 200 or 404\", () => ",
+							"    pm.expect([200, 404]).to.include(pm.response.code)",
+							");",
+							"",
+							"if (pm.response.code === 200) {",
+							"    const data = pm.response.json();",
+							"    pm.test(\"Employee structure OK\", () => {",
+							"        pm.expect(data).to.have.property(\"id\");",
+							"        pm.expect(data).to.have.property(\"email\");",
+							"        pm.expect(data).to.have.property(\"fullName\");",
+							"    });",
+							"}"
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/employee/{{employeeId}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"employee",
+						"{{employeeId}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Récupérer un employé par email",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status 200 or 404\", () => ",
+							"    pm.expect([200, 404]).to.include(pm.response.code)",
+							");"
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/employee/by-email/john.doe@example.com",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"employee",
+						"by-email",
+						"john.doe@example.com"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Récupérer employés par département",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status 200\", () => pm.response.code === 200);",
+							"",
+							"pm.test(\"Array returned\", () => {",
+							"    const data = pm.response.json();",
+							"    pm.expect(data).to.be.an(\"array\");",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/employee/by-department/{{deptId}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"employee",
+						"by-department",
+						"{{deptId}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Supprimer un département",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status is 204 or 404\", () => ",
+							"    pm.expect([204, 404]).to.include(pm.response.code));"
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/departments/{{deptId}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"departments",
+						"{{deptId}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Supprimer un employés",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status 204 or 404\", () =>",
+							"    pm.expect([204, 404]).to.include(pm.response.code)",
+							");"
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/employee/{{employeeId}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"employee",
+						"{{employeeId}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Importer un fichier CSV ou XLSX",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"//TODO ",
+							"// http://localhost:8080/api/employee/import?onDuplicate=update"
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": []
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"requests": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"requests": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "deptId",
+			"value": ""
+		},
+		{
+			"key": "employeeId",
+			"value": "",
+			"type": "default"
+		}
+	]
+}

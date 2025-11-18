@@ -10,8 +10,8 @@ services:
       POSTGRES_PASSWORD: sgepassword
     ports:
       - "5432:5432" # Expose le port pour accès depuis l'hôte (utile en dev)
-    volumes:
-      - postgres_data:/var/lib/postgresql/data # Persistance des données
+    #volumes:
+    #actuellement pas besoin de donnée persistante  - postgres_data:/var/lib/postgresql/data # Persistance des données
     networks:
       - sge_network
 

@@ -131,13 +131,13 @@ public class EmployeeController(IEmployeeService  employeeService, IImportServic
     /// Import employees from CSV or XLSX file. If an employee with the same email exists it will be updated.
     /// </summary>
     [HttpPost("import")]
-    public async Task<IActionResult> ImportEmployees(IFormFile file, [FromQuery] string onDuplicate = "update", CancellationToken cancellationToken = default)
+    public async Task<IActionResult> ImportEmployees(IFormFile? file, [FromQuery] string onDuplicate = "update", CancellationToken cancellationToken = default)
     {
         if (file == null) return BadRequest("File is required");
 
         if (!Enum.TryParse<ImportDuplicateBehavior>(onDuplicate, true, out var behavior)) behavior = ImportDuplicateBehavior.Update;
 
-        using var stream = file.OpenReadStream();
+        await using var stream = file.OpenReadStream();
         var result = await importService.ImportEmployeesAsync(stream, file.FileName, behavior, cancellationToken);
         return Ok(result);
     }
