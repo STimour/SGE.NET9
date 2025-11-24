@@ -57,7 +57,8 @@ jobs:
       # 🔵 Exécuter la collection Postman
       - name: Run Postman tests
         run: |
-          newman run testPostman/SGE_NET9.postman_collection.json \
+          newman run testPostman/SSGE_NET9_GITHUB_ACTION.postman_collection.json \
+            --env-var base_url=http://host.docker.internal:8080 \
             --reporters cli,junit \
             --reporter-junit-export newman-results.xml
           
