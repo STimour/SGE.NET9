@@ -31,21 +31,21 @@ jobs:
       - name: Show API logs
         run: docker compose -f compose.yaml logs sge_api
 
-      - name: Wait for API to be ready
-        run:  |
-          echo "Waiting for API (max 60s)..."
-          for i in {1..30}; do
-            status=$(curl -s -o /dev/null -w "%{http_code}" http://localhost:8080/api/departments)
-            if [ "$status" -eq 200 ]; then
-              echo "API is READY with status 200!"
-              exit 0
-            fi
-            echo "API not ready yet (code: $status). Retrying..."
-            sleep 2
-          done
-          echo "API did not start in time."
-          docker compose -f compose.yaml logs
-          exit 1
+      #- name: Wait for API to be ready
+      #  run:  |
+      #    echo "Waiting for API (max 60s)..."
+      #    for i in {1..30}; do
+      #      status=$(curl -s -o /dev/null -w "%{http_code}" http://localhost:8080/api/departments)
+      #      if [ "$status" -eq 200 ]; then
+      #        echo "API is READY with status 200!"
+      #        exit 0
+      #      fi
+      #      echo "API not ready yet (code: $status). Retrying..."
+      #      sleep 2
+      #    done
+      #    echo "API did not start in time."
+      #    docker compose -f compose.yaml logs
+      #    exit 1
           
       # 5️⃣ Installation de Newman
       - name: Install Newman

@@ -1,5 +1,3 @@
-version: "3.9"
-
 services:
   sge_postgres:
     image: postgres:latest
