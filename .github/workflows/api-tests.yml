@@ -9,12 +9,13 @@ on:
 jobs:
   e2e:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout
         uses: actions/checkout@v3
 
       - name: Ensure Docker Compose available
-        run: docker version && docker compose version
+        run: docker compose version
 
       - name: Build & start compose stack
         run: |
@@ -22,48 +23,41 @@ jobs:
         env:
           DOCKER_BUILDKIT: 1
 
-      - name: Wait for Postgres
+      - name: Wait for Postgres to be ready
         run: |
           for i in $(seq 1 60); do
-            docker compose -f compose.yaml exec -T sge.postgres pg_isready -U sgeuser -d sgedb >/dev/null 2>&1 && { echo 'postgres ready'; exit 0; }
+            if docker compose -f compose.yaml exec sge.postgres pg_isready -U sgeuser -d sgedb > /dev/null 2>&1; then
+              echo "Postgres ready"
+              exit 0
+            fi
             sleep 1
           done
           echo "Postgres not ready" >&2
           docker compose -f compose.yaml logs sge.postgres
           exit 1
 
-      - name: Apply EF migrations (run inside .NET SDK container)
+      - name: Apply EF migrations inside API container
         run: |
-          # on monte le workspace dans un conteneur dotnet sdk pour exécuter les migrations
-          docker run --rm \
-            -v "${{ github.workspace }}":/src -w /src \
-            mcr.microsoft.com/dotnet/sdk:9.0 \
-            bash -lc "\
-              dotnet tool restore || true; \
-              dotnet tool install --global dotnet-ef --version 9.* || true; \
-              export PATH=\$PATH:/root/.dotnet/tools; \
-              dotnet ef database update --project SGE.Infrastructure --startup-project SGE.API \
-            "
-        env:
-          # si besoin, surcharger la connection string (ex: host=host.docker.internal ou localhost)
-          ConnectionStrings__DefaultConnection: "Host=localhost;Port=5432;Database=sgedb;Username=sgeuser;Password=sgepassword"
+          docker compose -f compose.yaml exec sge.api dotnet ef database update --project /src/SGE.Infrastructure --startup-project /src/SGE.API
+        # API container already contains SDK, since you build it with your Dockerfile.
 
       - name: Wait for API to be ready
         run: |
           for i in $(seq 1 60); do
-            if curl -sSf http://localhost:8080/ > /dev/null 2>&1; then
-              echo "API ready" && exit 0
+            if curl -sSf http://localhost:8080/swagger/index.html > /dev/null 2>&1; then
+              echo "API ready"
+              exit 0
             fi
             sleep 1
           done
           echo "API did not start in time" >&2
-          docker compose -f compose.yaml logs sge.api || true
+          docker compose -f compose.yaml logs sge.api
           exit 1
 
       - name: Setup Node (for Newman)
         uses: actions/setup-node@v3
         with:
-          node-version: '16'
+          node-version: '18'
 
       - name: Install Newman
         run: npm install -g newman
@@ -83,4 +77,3 @@ jobs:
       - name: Tear down compose
         if: always()
         run: docker compose -f compose.yaml down --volumes
-
