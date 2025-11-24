@@ -19,11 +19,6 @@ jobs:
           POSTGRES_PASSWORD: sgepassword
         ports:
           - 5432:5432
-        options: >-
-          --health-cmd "pg_isready -U sgeuser"
-          --health-interval=10s
-          --health-timeout=5s
-          --health-retries=5
 
     steps:
       - name: Checkout code
@@ -54,17 +49,19 @@ jobs:
           echo "Postgres did not become ready in time" && exit 1
         shell: bash
 
-      - name: Install dotnet-ef (global)
+      - name: Install/restore dotnet tools
         run: |
-          dotnet tool install --global dotnet-ef --version "9.*" || dotnet tool update --global dotnet-ef --version "9.*"
-          echo "${HOME}/.dotnet/tools" >> $GITHUB_PATH
-        shell: bash
+          # restore tools defined in .config/dotnet-tools.json (preferred in repo)
+          dotnet tool restore
 
       - name: Apply EF migrations
         env:
           ConnectionStrings__DefaultConnection: "Host=localhost;Port=5432;Database=sgedb;Username=sgeuser;Password=sgepassword"
         run: |
-          dotnet ef database update --project  --startup-project 
+          # use the local tool (saute l'installation globale)
+          dotnet tool run dotnet-ef database update \
+            --project SGE.Infrastructure \
+            --startup-project SGE.API
         shell: bash
 
       - name: Run API (background)
@@ -73,7 +70,7 @@ jobs:
           ConnectionStrings__DefaultConnection: "Host=localhost;Port=5432;Database=sgedb;Username=sgeuser;Password=sgepassword"
           ASPNETCORE_URLS: "http://0.0.0.0:8080"
         run: |
-          dotnet run --project  &
+          dotnet run --project SGE.API/SGE.API.csproj &
           echo $! > api_pid.txt
         shell: bash
 
