@@ -47,6 +47,15 @@ services:
         dotnet tool restore &&
         dotnet ef database update --project SGE.Infrastructure --startup-project SGE.API
       "
+  sge.newman:
+    image: postman/newman:latest
+    depends_on:
+      - sge.api
+    networks:
+      - sge_network
+    volumes:
+      - ./testPostman:/etc/newman
+
 
 networks:
   sge_network:
