@@ -45,7 +45,7 @@ jobs:
         run: |
           echo "Waiting for API..."
           for i in $(seq 1 60); do
-            if curl -sSf http://localhost:8080/swagger/index.html > /dev/null 2>&1; then
+             if curl -sSf http://localhost:8080/api/departments > /dev/null 2>&1; then
               echo "API ready"
               exit 0
             fi
