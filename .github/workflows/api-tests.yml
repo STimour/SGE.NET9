@@ -1,63 +1,65 @@
-name: API Tests with Newman
+name: CI/CD SGE Test with Newman
 
 on:
   push:
-    branches: [ main, dev ]
-  pull_request:
-    branches: [ main, dev ]
-
+    branches: [main, dev]
+  pull_request: 
+    branches: [main, dev]
+    
+    
 jobs:
-  e2e:
+  test:
     runs-on: ubuntu-latest
-
+    
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
-
-      - name: Ensure Docker Compose available
-        run: docker compose version
-
-      - name: Build & start Docker Compose stack
-        run: |
-          docker compose -f compose.yaml up -d --build
-        env:
-          DOCKER_BUILDKIT: 1
-
-      - name: Wait for Postgres
-        run: |
-          echo "Waiting for Postgres..."
-          for i in $(seq 1 60); do
-            if docker compose -f compose.yaml exec sge.postgres pg_isready -U sgeuser -d sgedb > /dev/null 2>&1; then
-              echo "Postgres ready"
+      # 1️⃣ Récupération du code
+      - name: Checkout repo
+        uses: actions/checkout@v4
+      
+      # 2️⃣ Installation de Docker Compose (inclus dans docker-cli maintenant)  
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+      
+      # 3️⃣ Lancement du docker-compose (API + Postgres)  
+      - name: Start Docker Compose
+        run: docker compose -f compose.yaml up -d
+        
+      # 4️⃣ Attendre que l’API soit prête
+      - name: Wait for API to be ready
+        run:  |
+          echo "Waiting for API (max 60s)..."
+          for i in {1..30}; do
+            status=$(curl -s -o /dev/null -w "%{http_code}" http://localhost:8080/api/departments)
+            if [ "$status" -eq 200 ]; then
+              echo "API is READY with status 200!"
               exit 0
             fi
-            sleep 1
+            echo "API not ready yet (code: $status). Retrying..."
+            sleep 2
           done
-          docker compose -f compose.yaml logs sge.postgres
+          echo "API did not start in time."
+          docker compose -f compose.yaml logs
           exit 1
-
-      - name: Apply EF migrations
+          
+      # 5️⃣ Installation de Newman
+      - name: Install Newman
+        run: npm install -g newman
+          
+      # 🔵 Exécuter la collection Postman
+      - name: Run Postman tests
         run: |
-          echo "Running EF migrations..."
-          docker compose -f compose.yaml run --rm sge.migrations
-
-      - name: Wait API warmup
-        run: sleep 5
-
-      - name: Run Newman tests inside Docker network
-        run: |
-          docker compose -f compose.yaml run --rm sge.newman \
-            run SGE_NET9.postman_collection.json \
-            --env-var baseUrl=http://sge.api:80 \
+          newman run testPostman/SGE_NET9.postman_collection.json \
             --reporters cli,junit \
-            --reporter-junit-export /etc/newman/newman-results.xml
-
-      - name: Upload newman results
+            --reporter-junit-export newman-results.xml
+          
+      # 🟡 Sauvegarder le rapport comme artefact
+      - name: Upload Newman test report
         uses: actions/upload-artifact@v4
         with:
-          name: newman-results
-          path: testPostman/newman-results.xml
-
-      - name: Tear down compose
-        if: always()
-        run: docker compose -f compose.yaml down --volumes
+          name: newman-report
+          path: newman-results.xml
+            
+      # 6️⃣ Affichage des logs en cas d’échec
+      - name: Docker logs
+        if: failure()
+        run: docker compose -f compose.yaml logs

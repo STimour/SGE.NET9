@@ -8,10 +8,8 @@ using SGE.Infrastructure.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Récupérer la chaine de connexion
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 
-// Ajout DbContext
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseNpgsql(connectionString));
 
