@@ -41,19 +41,19 @@ jobs:
           echo "Running EF migrations..."
           docker compose -f compose.yaml run --rm sge.migrations
 
-      - name: Wait for API to be ready
-        run: |
-          echo "Waiting for API..."
-          for i in $(seq 1 60); do
-             if curl -sSf http://localhost:8080/api/departments > /dev/null 2>&1; then
-              echo "API ready"
-              exit 0
-            fi
-            sleep 1
-          done
-          echo "API failed to start in time"
-          docker compose -f compose.yaml logs sge.api
-          exit 1
+      - name: Wait for API to be ready (inside Docker)
+			  run: |
+    			echo "Waiting for API inside Docker network..."
+    			for i in $(seq 1 60); do
+      		if docker compose -f compose.yaml exec sge.api curl -sSf http://localhost:80/api/departments > /dev/null 2>&1; then
+        		echo "API ready"
+        		exit 0
+      		fi
+     		 		sleep 1
+    			done
+    			echo "API failed to start in time"
+    			docker compose -f compose.yaml logs sge.api
+    			exit 1
 
       - name: Setup Node for Newman
         uses: actions/setup-node@v3
