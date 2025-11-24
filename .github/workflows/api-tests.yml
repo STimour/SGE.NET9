@@ -11,18 +11,22 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      # --- 1) Récupérer le repo ---
       - name: Checkout repository
         uses: actions/checkout@v3
 
+      # --- 2) Vérifier Docker Compose ---
       - name: Ensure Docker Compose available
         run: docker compose version
 
+      # --- 3) Build & start services ---
       - name: Build & start Docker Compose stack
         run: |
           docker compose -f compose.yaml up -d --build
         env:
           DOCKER_BUILDKIT: 1
 
+      # --- 4) Attendre que Postgres soit prêt ---
       - name: Wait for Postgres
         run: |
           echo "Waiting for Postgres..."
@@ -37,25 +41,17 @@ jobs:
           docker compose -f compose.yaml logs sge.postgres
           exit 1
 
+      # --- 5) Exécuter les migrations EF ---
       - name: Apply EF migrations
         run: |
           echo "Running EF migrations inside Docker..."
           docker compose -f compose.yaml run --rm sge.migrations
 
-      - name: Wait for API to be ready (inside Docker)
-        run: |
-          echo "Waiting for API inside Docker..."
-          for i in $(seq 1 60); do
-            if docker compose -f compose.yaml exec sge.api curl -sSf http://localhost:80/api/departments > /dev/null 2>&1; then
-              echo "API READY"
-              exit 0
-            fi
-            sleep 1
-          done
-          echo "API failed to start in time"
-          docker compose -f compose.yaml logs sge.api
-          exit 1
+      # --- 6) Laisser l’API chauffer ---
+      - name: Wait API warmup
+        run: sleep 5
 
+      # --- 7) Installer Node + Newman ---
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
@@ -64,6 +60,7 @@ jobs:
       - name: Install Newman
         run: npm install -g newman
 
+      # --- 8) Lancer les tests Postman ---
       - name: Run Newman Tests
         run: |
           echo "Running Newman tests..."
@@ -72,12 +69,14 @@ jobs:
             --reporters cli,junit \
             --reporter-junit-export newman-results.xml
 
-      - name: Upload Newman Results
+      # --- 9) Upload des résultats ---
+      - name: Upload newman results
         uses: actions/upload-artifact@v4
         with:
           name: newman-results
           path: newman-results.xml
 
+      # --- 10) Stopper l’environnement ---
       - name: Tear down docker compose
         if: always()
         run: docker compose -f compose.yaml down --volumes
