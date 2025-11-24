@@ -1,25 +1,115 @@
-name: API Tets with Newman
+name: API Tests with Newman
 
 on:
-	push:
-		branches: [ main, dev ]
-	pull_request:
-		branches: [ main, dev ]
+  push:
+    branches: [ main, dev ]
+  pull_request:
+    branches: [ main, dev ]
 
-jobs
-	api-tes:
-		runs-on: ubuntu-latest
+jobs:
+  api-tests:
+    runs-on: ubuntu-latest
 
-		services:
-			postgres:
-				image: postgres:16
-				env:
-					POSTGRES_DB: sgedb
-					POSTGRES_USER: sgeuser
-					POSTGRES_PASSWORD: sgepassword
+    services:
+      postgres:
+        image: postgres:16
+        env:
+          POSTGRES_DB: sgedb
+          POSTGRES_USER: sgeuser
+          POSTGRES_PASSWORD: sgepassword
         ports:
           - 5432:5432
-          
-    sge.api:
-      
-  
+        options: >-
+          --health-cmd "pg_isready -U sgeuser"
+          --health-interval=10s
+          --health-timeout=5s
+          --health-retries=5
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup .NET 9 SDK
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: '9.0.x'
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16'
+
+      - name: Restore dependencies
+        run: dotnet restore SGE.sln
+
+      - name: Build solution
+        run: dotnet build SGE.sln --no-restore
+
+      - name: Wait for Postgres to be ready
+        run: |
+          for i in $(seq 1 30); do
+            nc -z localhost 5432 && echo "postgres ready" && exit 0
+            sleep 1
+          done
+          echo "Postgres did not become ready in time" && exit 1
+
+      - name: Install dotnet-ef (global)
+        run: |
+          dotnet tool install --global dotnet-ef --version "9.*" || dotnet tool update --global dotnet-ef --version "9.*"
+          echo "::add-path::${HOME}/.dotnet/tools"
+        shell: bash
+
+      - name: Apply EF migrations
+        env:
+          ConnectionStrings__DefaultConnection: "Host=localhost;Port=5432;Database=sgedb;Username=sgeuser;Password= sgepassword"
+        run: |
+          dotnet ef database update --project SGE.Infrastructure --startup-project SGE.API
+        shell: bash
+
+      - name: Run API (background)
+        env:
+          ASPNETCORE_ENVIRONMENT: Development
+          # utilise la même clé que votre docker-compose : ConnectionStrings__DefaultConnection
+          ConnectionStrings__DefaultConnection: "Host=localhost;Port=5432;Database=sgedb;Username=sgeuser;Password= sgepassword"
+          # binder sur toutes les interfaces, port choisi 8080 pour correspondre à compose mapping host:8080
+          ASPNETCORE_URLS: "http://0.0.0.0:8080"
+        run: |
+          dotnet run --project SGE.API/SGE.API.csproj &
+          echo $! > api_pid.txt
+        shell: bash
+
+      - name: Wait for API to be ready
+        run: |
+          for i in $(seq 1 60); do
+            if curl -sSf http://localhost:8080/ > /dev/null 2>&1; then
+              echo "API ready" && exit 0
+            fi
+            sleep 1
+          done
+          echo "API did not start in time" && exit 1
+        shell: bash
+
+      - name: Install Newman
+        run: npm install -g newman
+
+      - name: Run Postman / Newman tests
+        run: |
+          newman run tests/SGE_NET9.postman_collection.json \
+            --reporters cli,junit \
+            --reporter-junit-export newman-results.xml
+        shell: bash
+
+      - name: Upload Newman report
+        uses: actions/upload-artifact@v4
+        with:
+          name: newman-report
+          path: newman-results.xml
+
+      - name: Stop API
+        if: always()
+        run: |
+          if [ -f api_pid.txt ]; then
+            kill $(cat api_pid.txt) || true
+          fi
+        shell: bash
+
