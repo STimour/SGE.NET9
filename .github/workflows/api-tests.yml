@@ -17,9 +17,8 @@ jobs:
       - name: Ensure Docker Compose available
         run: docker compose version
 
-      - name: Build & Start Docker Compose Stack
-        run: |
-          docker compose -f compose.yaml up -d --build
+      - name: Build & Start Docker Compose stack
+        run: docker compose -f compose.yaml up -d --build
         env:
           DOCKER_BUILDKIT: 1
 
@@ -33,14 +32,12 @@ jobs:
             fi
             sleep 1
           done
-          echo "Postgres failed to start in time"
+          echo "Postgres did not start in time"
           docker compose -f compose.yaml logs sge.postgres
           exit 1
 
-      - name: Apply EF Migrations
-        run: |
-          echo "Running EF migrations..."
-          docker compose -f compose.yaml run --rm sge.migrations
+      - name: Apply EF migrations
+        run: docker compose -f compose.yaml run --rm sge.migrations
 
       - name: Wait for API to be ready
         run: |
@@ -52,11 +49,11 @@ jobs:
             fi
             sleep 1
           done
-          echo "API failed to start in time"
+          echo "API did not start in time"
           docker compose -f compose.yaml logs sge.api
           exit 1
 
-      - name: Setup Node for Newman
+      - name: Setup Node (for Newman)
         uses: actions/setup-node@v3
         with:
           node-version: '18'
@@ -64,19 +61,18 @@ jobs:
       - name: Install Newman
         run: npm install -g newman
 
-      - name: Run Newman Tests
+      - name: Run Newman tests
         run: |
-          echo "Running Postman tests..."
           newman run ./testPostman/SGE_NET9.postman_collection.json \
             --reporters cli,junit \
             --reporter-junit-export newman-results.xml
 
-      - name: Upload Newman Results
+      - name: Upload Newman results
         uses: actions/upload-artifact@v4
         with:
           name: newman-results
           path: newman-results.xml
 
-      - name: Tear Down Environment
+      - name: Tear down compose
         if: always()
         run: docker compose -f compose.yaml down --volumes

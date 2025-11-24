@@ -30,6 +30,7 @@ services:
     networks:
       - sge_network
 
+  # Service dédié pour exécuter les migrations EF
   sge.migrations:
     image: mcr.microsoft.com/dotnet/sdk:9.0
     container_name: sge_migrations
@@ -42,8 +43,7 @@ services:
       ConnectionStrings__DefaultConnection: "Host=sge.postgres;Database=sgedb;Username=sgeuser;Password=sgepassword"
     entrypoint: >
       bash -c "
-        dotnet tool install --global dotnet-ef &&
-        export PATH=\$PATH:/root/.dotnet/tools &&
+        dotnet tool restore &&
         dotnet ef database update --project SGE.Infrastructure --startup-project SGE.API
       "
 
