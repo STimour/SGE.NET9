@@ -18,7 +18,7 @@ services:
   sge.api:
     build:
       context: . # Contexte de build (racine de la solution)
-      dockerfile: ../SGE/SGE.API/Dockerfile # Chemin vers le Dockerfile de l’API
+      dockerfile: ./SGE.API/Dockerfile # Chemin vers le Dockerfile de l’API
     container_name: sge_api
     image: sge.api
     ports:
