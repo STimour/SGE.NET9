@@ -42,12 +42,12 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:8080/api/departments",
+					"raw": "http://localhost:80/api/departments",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
-					"port": "8080",
+					"port": "80",
 					"path": [
 						"api",
 						"departments"
@@ -85,12 +85,12 @@
 					}
 				],
 				"url": {
-					"raw": "http://localhost:8080/api/departments",
+					"raw": "http://localhost:80/api/departments",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
-					"port": "8080",
+					"port": "80",
 					"path": [
 						"api",
 						"departments"
@@ -133,12 +133,12 @@
 					}
 				],
 				"url": {
-					"raw": "http://localhost:8080/api/departments/{{deptId}}",
+					"raw": "http://localhost:80/api/departments/{{deptId}}",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
-					"port": "8080",
+					"port": "80",
 					"path": [
 						"api",
 						"departments",
@@ -177,12 +177,12 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:8080/api/departments/{{deptId}}",
+					"raw": "http://localhost:80/api/departments/{{deptId}}",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
-					"port": "8080",
+					"port": "80",
 					"path": [
 						"api",
 						"departments",
@@ -240,12 +240,12 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:8080/api/employee",
+					"raw": "http://localhost:80/api/employee",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
-					"port": "8080",
+					"port": "80",
 					"path": [
 						"api",
 						"employee"
@@ -290,12 +290,12 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:8080/api/employee/{{employeeId}}",
+					"raw": "http://localhost:80/api/employee/{{employeeId}}",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
-					"port": "8080",
+					"port": "80",
 					"path": [
 						"api",
 						"employee",
@@ -329,12 +329,12 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8080/api/employee",
+					"raw": "http://localhost:80/api/employee",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
-					"port": "8080",
+					"port": "80",
 					"path": [
 						"api",
 						"employee"
@@ -373,12 +373,12 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8080/api/employee/{{employeeId}}",
+					"raw": "http://localhost:80/api/employee/{{employeeId}}",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
-					"port": "8080",
+					"port": "80",
 					"path": [
 						"api",
 						"employee",
@@ -409,12 +409,12 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8080/api/employee/by-email/john.doe@example.com",
+					"raw": "http://localhost:80/api/employee/by-email/john.doe@example.com",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
-					"port": "8080",
+					"port": "80",
 					"path": [
 						"api",
 						"employee",
@@ -449,12 +449,12 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8080/api/employee/by-department/{{deptId}}",
+					"raw": "http://localhost:80/api/employee/by-department/{{deptId}}",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
-					"port": "8080",
+					"port": "80",
 					"path": [
 						"api",
 						"employee",
@@ -485,12 +485,12 @@
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8080/api/departments/{{deptId}}",
+					"raw": "http://localhost:80/api/departments/{{deptId}}",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
-					"port": "8080",
+					"port": "80",
 					"path": [
 						"api",
 						"departments",
@@ -521,12 +521,12 @@
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8080/api/employee/{{employeeId}}",
+					"raw": "http://localhost:80/api/employee/{{employeeId}}",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
-					"port": "8080",
+					"port": "80",
 					"path": [
 						"api",
 						"employee",
@@ -544,7 +544,7 @@
 					"script": {
 						"exec": [
 							"//TODO ",
-							"// http://localhost:8080/api/employee/import?onDuplicate=update"
+							"// http://localhost:80/api/employee/import?onDuplicate=update"
 						],
 						"type": "text/javascript",
 						"packages": {},
