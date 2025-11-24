@@ -10,13 +10,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3104b775-265e-4b03-84c3-9f5e734814c7" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.config/dotnet-tools.json" beforeDir="false" afterPath="$PROJECT_DIR$/.config/dotnet-tools.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.SGE/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.SGE/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SGE.API/Controllers/EmployeeController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SGE.API/Controllers/EmployeeController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SGE.Application/Services/ImportService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SGE.Application/Services/ImportService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SGE.Core/bin/Debug/net9.0/SGE.Core.dll" beforeDir="false" afterPath="$PROJECT_DIR$/SGE.Core/bin/Debug/net9.0/SGE.Core.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SGE.Core/bin/Debug/net9.0/SGE.Core.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/SGE.Core/bin/Debug/net9.0/SGE.Core.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SGE.Infrastructure/Migrations/ApplicationDbContextModelSnapshot.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SGE.Infrastructure/Migrations/ApplicationDbContextModelSnapshot.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/compose.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/compose.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -52,6 +46,7 @@
     <setting file="file://$PROJECT_DIR$/SGE.Infrastructure/Repositories/DepartmentRepository.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/SGE.Infrastructure/Repositories/EmployeeRepository.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/SGE.Infrastructure/Repositories/Repository.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/testPostman/SGE_NET9.postman_collection.json" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="KubernetesApiPersistence">{}</component>
   <component name="KubernetesApiProvider">{
@@ -216,7 +211,7 @@
       <workItem from="1762534415252" duration="1379000" />
       <workItem from="1763155049250" duration="207000" />
       <workItem from="1763233799256" duration="8671000" />
-      <workItem from="1763500882014" duration="2036000" />
+      <workItem from="1763500882014" duration="3048000" />
     </task>
     <servers />
   </component>

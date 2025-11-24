@@ -31,9 +31,9 @@ services:
     networks:
       - sge_network
 
-volumes:
-  postgres_data: # Volume pour persister la BDD
-    driver: local
+#volumes:
+#  postgres_data: # Volume pour persister la BDD
+#    driver: local
 
 networks:
   sge_network:
