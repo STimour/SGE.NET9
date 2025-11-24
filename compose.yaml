@@ -1,39 +1,51 @@
 ﻿version: "3.9"
 
 services:
+
   sge.postgres:
-    image: postgres:latest # Utilise la dernière version officielle de PostgreSQL
+    image: postgres:latest
     container_name: sge_postgres
-    environment: # Variables d'environnement pour créer la DB + user
+    environment:
       POSTGRES_DB: sgedb
       POSTGRES_USER: sgeuser
       POSTGRES_PASSWORD: sgepassword
     ports:
-      - "5432:5432" # Expose le port pour accès depuis l'hôte (utile en dev)
-    #volumes:
-    #actuellement pas besoin de donnée persistante  - postgres_data:/var/lib/postgresql/data # Persistance des données
+      - "5432:5432"
     networks:
       - sge_network
 
   sge.api:
     build:
-      context: . # Contexte de build (racine de la solution)
-      dockerfile: ./SGE.API/Dockerfile # Chemin vers le Dockerfile de l’API
+      context: .
+      dockerfile: ./SGE.API/Dockerfile
     container_name: sge_api
     image: sge.api
     ports:
-      - "8080:80" # Mappe le port 80 du conteneur sur 5000 de l’hôte
+      - "8080:80"
     depends_on:
-      - sge.postgres # Démarre Postgres avant l’API (ordre, pas readiness)
+      - sge.postgres
     environment:
       ASPNETCORE_ENVIRONMENT: Development
       ConnectionStrings__DefaultConnection: "Host=sge.postgres;Database=sgedb;Username=sgeuser;Password=sgepassword"
     networks:
       - sge_network
 
-#volumes:
-#  postgres_data: # Volume pour persister la BDD
-#    driver: local
+  sge.migrations:
+    image: mcr.microsoft.com/dotnet/sdk:9.0
+    container_name: sge_migrations
+    working_dir: /src
+    volumes:
+      - ./:/src
+    depends_on:
+      - sge.postgres
+    environment:
+      ConnectionStrings__DefaultConnection: "Host=sge.postgres;Database=sgedb;Username=sgeuser;Password=sgepassword"
+    entrypoint: >
+      bash -c "
+        dotnet tool install --global dotnet-ef &&
+        export PATH=\$PATH:/root/.dotnet/tools &&
+        dotnet ef database update --project SGE.Infrastructure --startup-project SGE.API
+      "
 
 networks:
   sge_network:
