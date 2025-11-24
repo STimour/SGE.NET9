@@ -1,4 +1,4 @@
-name: API Tests with Newman
+name: API Tests with Newman (via docker compose)
 
 on:
   push:
@@ -7,72 +7,46 @@ on:
     branches: [ main, dev ]
 
 jobs:
-  api-tests:
+  e2e:
     runs-on: ubuntu-latest
-
-    services:
-      postgres:
-        image: postgres:16
-        env:
-          POSTGRES_DB: sgedb
-          POSTGRES_USER: sgeuser
-          POSTGRES_PASSWORD: sgepassword
-        ports:
-          - 5432:5432
-
     steps:
-      - name: Checkout code
+      - name: Checkout
         uses: actions/checkout@v3
 
-      - name: Setup .NET 9 SDK
-        uses: actions/setup-dotnet@v3
-        with:
-          dotnet-version: '9.0.x'
+      - name: Ensure Docker Compose available
+        run: docker version && docker compose version
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: '16'
-
-      - name: Restore dependencies
-        run: dotnet restore SGE.sln
-
-      - name: Build solution
-        run: dotnet build SGE.sln --no-restore
-
-      - name: Wait for Postgres to be ready
+      - name: Build & start compose stack
         run: |
-          for i in $(seq 1 30); do
-            nc -z localhost 5432 && echo "postgres ready" && exit 0
+          docker compose -f compose.yaml up -d --build
+        env:
+          DOCKER_BUILDKIT: 1
+
+      - name: Wait for Postgres
+        run: |
+          for i in $(seq 1 60); do
+            docker compose -f compose.yaml exec -T sge.postgres pg_isready -U sgeuser -d sgedb >/dev/null 2>&1 && { echo 'postgres ready'; exit 0; }
             sleep 1
           done
-          echo "Postgres did not become ready in time" && exit 1
-        shell: bash
+          echo "Postgres not ready" >&2
+          docker compose -f compose.yaml logs sge.postgres
+          exit 1
 
-      - name: Install/restore dotnet tools
+      - name: Apply EF migrations (run inside .NET SDK container)
         run: |
-          # restore tools defined in .config/dotnet-tools.json (preferred in repo)
-          dotnet tool restore
-
-      - name: Apply EF migrations
+          # on monte le workspace dans un conteneur dotnet sdk pour exécuter les migrations
+          docker run --rm \
+            -v "${{ github.workspace }}":/src -w /src \
+            mcr.microsoft.com/dotnet/sdk:9.0 \
+            bash -lc "\
+              dotnet tool restore || true; \
+              dotnet tool install --global dotnet-ef --version 9.* || true; \
+              export PATH=\$PATH:/root/.dotnet/tools; \
+              dotnet ef database update --project SGE.Infrastructure --startup-project SGE.API \
+            "
         env:
+          # si besoin, surcharger la connection string (ex: host=host.docker.internal ou localhost)
           ConnectionStrings__DefaultConnection: "Host=localhost;Port=5432;Database=sgedb;Username=sgeuser;Password=sgepassword"
-        run: |
-          # use the local tool (saute l'installation globale)
-          dotnet tool run dotnet-ef database update \
-            --project SGE.Infrastructure \
-            --startup-project SGE.API
-        shell: bash
-
-      - name: Run API (background)
-        env:
-          ASPNETCORE_ENVIRONMENT: Development
-          ConnectionStrings__DefaultConnection: "Host=localhost;Port=5432;Database=sgedb;Username=sgeuser;Password=sgepassword"
-          ASPNETCORE_URLS: "http://0.0.0.0:8080"
-        run: |
-          dotnet run --project SGE.API/SGE.API.csproj &
-          echo $! > api_pid.txt
-        shell: bash
 
       - name: Wait for API to be ready
         run: |
@@ -82,31 +56,31 @@ jobs:
             fi
             sleep 1
           done
-          echo "API did not start in time" && exit 1
-        shell: bash
+          echo "API did not start in time" >&2
+          docker compose -f compose.yaml logs sge.api || true
+          exit 1
+
+      - name: Setup Node (for Newman)
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16'
 
       - name: Install Newman
         run: npm install -g newman
-        shell: bash
 
-      - name: Run Postman / Newman tests
+      - name: Run Newman tests
         run: |
-          newman run  \
+          newman run ./testPostman/SGE_NET9.postman_collection.json \
             --reporters cli,junit \
             --reporter-junit-export newman-results.xml
-        shell: bash
 
-      - name: Upload Newman report
+      - name: Upload newman results
         uses: actions/upload-artifact@v4
         with:
-          name: newman-report
+          name: newman-results
           path: newman-results.xml
 
-      - name: Stop API
+      - name: Tear down compose
         if: always()
-        run: |
-          if [ -f api_pid.txt ]; then
-            kill $(cat api_pid.txt) || true
-          fi
-        shell: bash
+        run: docker compose -f compose.yaml down --volumes
 
