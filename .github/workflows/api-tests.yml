@@ -37,7 +37,9 @@ jobs:
           exit 1
 
       - name: Apply EF migrations
-        run: docker compose -f compose.yaml run --rm sge.migrations
+        run: |
+          echo "Running EF migrations..."
+          docker compose -f compose.yaml run --rm sge.migrations
 
       - name: Wait for API to be ready
         run: |
@@ -49,11 +51,11 @@ jobs:
             fi
             sleep 1
           done
-          echo "API did not start in time"
+          echo "API failed to start in time"
           docker compose -f compose.yaml logs sge.api
           exit 1
 
-      - name: Setup Node (for Newman)
+      - name: Setup Node for Newman
         uses: actions/setup-node@v3
         with:
           node-version: '18'
@@ -61,13 +63,13 @@ jobs:
       - name: Install Newman
         run: npm install -g newman
 
-      - name: Run Newman tests
+      - name: Run Newman Tests
         run: |
           newman run ./testPostman/SGE_NET9.postman_collection.json \
             --reporters cli,junit \
             --reporter-junit-export newman-results.xml
 
-      - name: Upload Newman results
+      - name: Upload Newman Results
         uses: actions/upload-artifact@v4
         with:
           name: newman-results

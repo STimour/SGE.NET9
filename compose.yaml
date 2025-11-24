@@ -30,7 +30,6 @@ services:
     networks:
       - sge_network
 
-  # Service dédié pour exécuter les migrations EF
   sge.migrations:
     image: mcr.microsoft.com/dotnet/sdk:9.0
     container_name: sge_migrations
@@ -41,6 +40,8 @@ services:
       - sge.postgres
     environment:
       ConnectionStrings__DefaultConnection: "Host=sge.postgres;Database=sgedb;Username=sgeuser;Password=sgepassword"
+    networks:
+      - sge_network
     entrypoint: >
       bash -c "
         dotnet tool restore &&
