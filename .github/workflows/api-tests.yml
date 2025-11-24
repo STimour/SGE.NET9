@@ -27,10 +27,13 @@ jobs:
       - name: Show compose services
         run: docker compose -f compose.yaml ps 
         
-      # 4️⃣ Attendre que l’API soit prête
+      - name: API logs
+        run: docker compose -f compose.yaml logs sge_api
+        
       - name: Show API logs
         run: docker compose -f compose.yaml logs sge_api
-
+          
+      # 4️⃣ Attendre que l’API soit prête
       #- name: Wait for API to be ready
       #  run:  |
       #    echo "Waiting for API (max 60s)..."
