@@ -10,6 +10,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3104b775-265e-4b03-84c3-9f5e734814c7" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.github/workflows/api-tests.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/api-tests.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.SGE/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.SGE/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/compose.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/compose.yaml" afterDir="false" />
     </list>
@@ -17,6 +18,9 @@
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="DpaMonitoringSettings">
+    <option name="firstShow" value="false" />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -53,7 +57,7 @@
   &quot;isMigrated&quot;: true
 }</component>
   <component name="ProblemsViewState">
-    <option name="selectedTabId" value="Toolset" />
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 1
@@ -66,25 +70,32 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Docker.SGE.API/Dockerfile.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.compose.yaml.sge.postgres: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.compose.yaml: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;CodeInspectionSettingsId&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    ".NET Launch Settings Profile.SGE.API: http.executor": "Run",
+    "Docker.SGE.API/Dockerfile.executor": "Run",
+    "Docker.compose.yaml.sge.postgres: Compose Deployment.executor": "Run",
+    "Docker.compose.yaml: Compose Deployment.executor": "Run",
+    "Docker.toValidate.yaml: Compose Deployment.executor": "Run",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "main",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "CodeInspectionSettingsId",
+    "vue.rearranger.settings.migration": "true"
+  },
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "postgresql"
+    ]
   }
-}</component>
+}]]></component>
   <component name="RiderProblemsViewState">
     <option name="proportion" value="0.5422031" />
   </component>
@@ -172,7 +183,7 @@
       <EXTENSION ID="com.jetbrains.rider.docker.debug" isFastModeEnabled="true" isSslEnabled="false" />
       <method v="2" />
     </configuration>
-    <configuration name="compose.yaml.sge.postgres: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
+    <configuration name="toValidate.yaml.sge.postgres: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
       <deployment type="docker-compose.yml">
         <settings>
           <option name="services">
@@ -180,15 +191,23 @@
               <option value="sge.postgres" />
             </list>
           </option>
-          <option name="sourceFilePath" value="compose.yaml" />
+          <option name="sourceFilePath" value="toValidate.yaml" />
         </settings>
       </deployment>
       <EXTENSION ID="com.jetbrains.rider.docker.debug" isFastModeEnabled="true" isSslEnabled="false" />
       <method v="2" />
     </configuration>
+    <list>
+      <item itemvalue=".NET Launch Settings Profile.SGE.API: http" />
+      <item itemvalue=".NET Launch Settings Profile.SGE.API: https" />
+      <item itemvalue="Docker.compose.yaml: Compose Deployment" />
+      <item itemvalue="Docker.SGE.API/Dockerfile" />
+      <item itemvalue="Docker.toValidate.yaml.sge.postgres: Compose Deployment" />
+      <item itemvalue="Multi-Launch.Multi-Launch: SGE" />
+    </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Docker.compose.yaml.sge.postgres: Compose Deployment" />
+        <item itemvalue="Docker.toValidate.yaml.sge.postgres: Compose Deployment" />
       </list>
     </recent_temporary>
   </component>
@@ -211,7 +230,7 @@
       <workItem from="1762534415252" duration="1379000" />
       <workItem from="1763155049250" duration="207000" />
       <workItem from="1763233799256" duration="8671000" />
-      <workItem from="1763500882014" duration="3048000" />
+      <workItem from="1763500882014" duration="5357000" />
     </task>
     <servers />
   </component>

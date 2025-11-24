@@ -1,8 +1,5 @@
-﻿version: "3.9"
-
 services:
-
-  sge.postgres:
+  sge_postgres:
     image: postgres:latest
     container_name: sge_postgres
     environment:
@@ -11,51 +8,30 @@ services:
       POSTGRES_PASSWORD: sgepassword
     ports:
       - "5432:5432"
+#    volumes:
+#      - postgres_data:/var/lib/postgresql/data
     networks:
       - sge_network
 
-  sge.api:
+  sge_api:
     build:
       context: .
       dockerfile: ./SGE.API/Dockerfile
     container_name: sge_api
-    image: sge.api
+    image: sge_api
     ports:
       - "8080:80"
     depends_on:
-      - sge.postgres
+      - sge_postgres
     environment:
       ASPNETCORE_ENVIRONMENT: Development
-      ConnectionStrings__DefaultConnection: "Host=sge.postgres;Database=sgedb;Username=sgeuser;Password=sgepassword"
+      ConnectionStrings__DefaultConnection: "Host=sge_postgres;Database=sgedb;Username=sgeuser;Password=sgepassword"
     networks:
       - sge_network
 
-  sge.migrations:
-    image: mcr.microsoft.com/dotnet/sdk:9.0
-    container_name: sge_migrations
-    working_dir: /src
-    volumes:
-      - ./:/src
-    depends_on:
-      - sge.postgres
-    environment:
-      ConnectionStrings__DefaultConnection: "Host=sge.postgres;Database=sgedb;Username=sgeuser;Password=sgepassword"
-    networks:
-      - sge_network
-    entrypoint: >
-      bash -c "
-        dotnet tool restore &&
-        dotnet ef database update --project SGE.Infrastructure --startup-project SGE.API
-      "
-  sge.newman:
-    image: postman/newman:latest
-    depends_on:
-      - sge.api
-    networks:
-      - sge_network
-    volumes:
-      - ./testPostman:/etc/newman
-
+#volumes:
+#  postgres_data:
+#    driver: local
 
 networks:
   sge_network:

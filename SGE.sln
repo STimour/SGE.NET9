@@ -10,7 +10,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SGE.API", "SGE.API\SGE.API.
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{CBCE8969-7FF2-40D0-9DFC-5A11E220E6F2}"
 	ProjectSection(SolutionItems) = preProject
-		compose.yaml = compose.yaml
+		toValidate.yaml = toValidate.yaml
 	EndProjectSection
 EndProject
 Global
