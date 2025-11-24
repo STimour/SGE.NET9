@@ -11,16 +11,73 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # --- 1) Checkout du code ---
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      # --- 2) Vérification Docker ---
       - name: Ensure Docker Compose available
         run: docker compose version
 
-      # --- 3) Build & démarrage de l'environnement ---
       - name: Build & start Docker Compose stack
         run: |
           docker compose -f compose.yaml up -d --build
         env:
+          DOCKER_BUILDKIT: 1
+
+      - name: Wait for Postgres
+        run: |
+          echo "Waiting for Postgres..."
+          for i in $(seq 1 60); do
+            if docker compose -f compose.yaml exec sge.postgres pg_isready -U sgeuser -d sgedb > /dev/null 2>&1; then
+              echo "Postgres ready"
+              exit 0
+            fi
+            sleep 1
+          done
+          echo "Postgres did NOT start in time"
+          docker compose -f compose.yaml logs sge.postgres
+          exit 1
+
+      - name: Apply EF migrations
+        run: |
+          echo "Running EF migrations inside Docker..."
+          docker compose -f compose.yaml run --rm sge.migrations
+
+      - name: Wait for API to be ready (inside Docker)
+        run: |
+          echo "Waiting for API inside Docker..."
+          for i in $(seq 1 60); do
+            if docker compose -f compose.yaml exec sge.api curl -sSf http://localhost:80/api/departments > /dev/null 2>&1; then
+              echo "API READY"
+              exit 0
+            fi
+            sleep 1
+          done
+          echo "API failed to start in time"
+          docker compose -f compose.yaml logs sge.api
+          exit 1
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      - name: Install Newman
+        run: npm install -g newman
+
+      - name: Run Newman Tests
+        run: |
+          echo "Running Newman tests..."
+          newman run ./testPostman/SGE_NET9.postman_collection.json \
+            --env-var baseUrl=http://localhost:8080 \
+            --reporters cli,junit \
+            --reporter-junit-export newman-results.xml
+
+      - name: Upload Newman Results
+        uses: actions/upload-artifact@v4
+        with:
+          name: newman-results
+          path: newman-results.xml
+
+      - name: Tear down docker compose
+        if: always()
+        run: docker compose -f compose.yaml down --volumes
