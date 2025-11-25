@@ -11,6 +11,10 @@
   <component name="ChangeListManager">
     <list default="true" id="3104b775-265e-4b03-84c3-9f5e734814c7" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.SGE/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.SGE/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.Application/Services/AttendaceService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SGE.Application/Services/AttendaceService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.Core/Exception/BusinessRuleException.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SGE.Core/Exception/BusinessRuleException.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.Core/bin/Debug/net9.0/SGE.Core.dll" beforeDir="false" afterPath="$PROJECT_DIR$/SGE.Core/bin/Debug/net9.0/SGE.Core.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.Core/bin/Debug/net9.0/SGE.Core.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/SGE.Core/bin/Debug/net9.0/SGE.Core.pdb" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,7 +62,7 @@
   &quot;isMigrated&quot;: true
 }</component>
   <component name="ProblemsViewState">
-    <option name="selectedTabId" value="SWEA" />
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 1
@@ -78,6 +82,7 @@
     "Docker.bdd_compose.executor": "Run",
     "Docker.compose.yaml.sge.postgres: Compose Deployment.executor": "Run",
     "Docker.compose.yaml: Compose Deployment.executor": "Run",
+    "Docker.postgres_compose.yaml: Compose Deployment.executor": "Run",
     "Docker.toValidate.yaml: Compose Deployment.executor": "Run",
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "Rider.SolutionAnalysis.ShowPreview": "false",

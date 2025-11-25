@@ -25,7 +25,7 @@ public class BusinessRuleException : SgeException
 /// </remarks>
 public class EmployeeNotFoundException : SgeException
 {
-    public EmployeeNotFoundException(int employeeId) 
+    public EmployeeNotFoundException(string employeeId) 
         : base($"Employé avec l'ID {employeeId} introuvable.", "EMPLOYEE_NOT_FOUND", 404)
     { }
 }
@@ -123,7 +123,7 @@ public class ValidationException : SgeException
 {
     public Dictionary<string, List<string>> Errors { get; }
 
-    public ValidationException(Dictionary<string, List<string>> errors)
+    public ValidationException(string errors)
         : base("Une ou plusieurs erreurs de validation sont survenues.", "VALIDATION_ERROR", 400)
     {
         Errors = errors;
