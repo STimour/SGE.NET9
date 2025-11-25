@@ -58,7 +58,7 @@ jobs:
       - name: Run Postman tests
         run: |
           newman run ./testPostman/SGE_NET9_GITHUB_ACTION.postman_collection.json \
-            --env-var base_url=http://host.docker.internal:8080 \
+            --env-var base_url=http://sge_api:80 \
             --reporters cli,junit \
             --reporter-junit-export newman-results.xml
           
