@@ -34,21 +34,17 @@ jobs:
         run: docker compose -f compose.yaml logs sge_api
           
       # 4️⃣ Attendre que l’API soit prête
-      #- name: Wait for API to be ready
-      #  run:  |
-      #    echo "Waiting for API (max 60s)..."
-      #    for i in {1..30}; do
-      #      status=$(curl -s -o /dev/null -w "%{http_code}" http://localhost:8080/api/departments)
-      #      if [ "$status" -eq 200 ]; then
-      #        echo "API is READY with status 200!"
-      #        exit 0
-      #      fi
-      #      echo "API not ready yet (code: $status). Retrying..."
-      #      sleep 2
-      #    done
-      #    echo "API did not start in time."
-      #    docker compose -f compose.yaml logs
-      #    exit 1
+      - name: Wait for API to be ready
+        run:  |
+          for i in $(seq 1 60); do
+            if curl -sSf http://localhost:8080/api/departments > /dev/null 2>&1; then
+              echo "API ready" && exit 0
+            fi
+            echo "Waiting for API..." && sleep 2
+          done
+          echo "API did not start in time" && docker compose -f compose.yaml logs sge_api && exit 1
+          docker compose -f compose.yaml logs
+          exit 1
           
       # 5️⃣ Installation de Newman
       - name: Install Newman
@@ -58,7 +54,7 @@ jobs:
       - name: Run Postman tests
         run: |
           newman run ./testPostman/SGE_NET9_GITHUB_ACTION.postman_collection.json \
-            --env-var base_url=http://sge_api:80 \
+            --env-var base_url=http://localhost:8080 \
             --reporters cli,junit \
             --reporter-junit-export newman-results.xml
           
