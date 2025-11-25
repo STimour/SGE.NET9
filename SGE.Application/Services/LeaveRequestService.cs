@@ -4,6 +4,7 @@ using SGE.Application.Interfaces.Repositories;
 using SGE.Application.Interfaces.IRepositories;
 using SGE.Application.Interfaces.Services;
 using SGE.Core.Entities;
+using SGE.Core.Exceptions;
 using SGE.Core.Enums;
 
 namespace SGE.Application.Services;
@@ -20,16 +21,33 @@ public class LeaveRequestService(
 
     public async Task<LeaveRequestDto> CreateAsync(LeaveRequestCreateDto dto, CancellationToken cancellationToken = default)
     {
-        if (!await employeeRepo.ExistsAsync(dto.EmployeeId, cancellationToken))
-            throw new KeyNotFoundException($"Employee {dto.EmployeeId} not found");
+        // validate employee exists and load
+        var employee = await employeeRepo.GetByIdAsync(dto.EmployeeId, cancellationToken);
+        if (employee is null)
+            throw new EmployeeNotFoundException(dto.EmployeeId);
+
+        // validate dates
+        if (dto.EndDate.Date < dto.StartDate.Date)
+            throw new ValidationException("EndDate", "La date de fin doit être supérieure ou égale à la date de début.");
+
+        if (dto.StartDate.Date < DateTime.Today)
+            throw new ValidationException("StartDate", "La date de début doit être supérieure ou égale à la date du jour.");
+
+        // calculate business days
+        var daysRequested = CalculateBusinessDays(dto.StartDate.Date, dto.EndDate.Date);
+
+        // check remaining allowance
+        var remaining = await GetRemainingLeaveDaysAsync(dto.EmployeeId, dto.StartDate.Year, cancellationToken);
+        if (daysRequested > remaining)
+            throw new InsufficientLeaveDaysException(daysRequested, remaining);
 
         // check conflicts
-        if (await HasConflictingLeaveAsync(dto.EmployeeId, dto.StartDate, dto.EndDate, null, cancellationToken))
-            throw new InvalidOperationException("Leave request conflicts with existing request");
+        var hasConflict = await HasConflictingLeaveAsync(dto.EmployeeId, dto.StartDate, dto.EndDate, null, cancellationToken);
+        if (hasConflict)
+            throw new ConflictingLeaveRequestException(dto.StartDate, dto.EndDate);
 
         var entity = map.Map<LeaveRequest>(dto);
-        // calculate days requested (business days)
-        entity.DaysRequested = CalculateBusinessDays(dto.StartDate.Date, dto.EndDate.Date);
+        entity.DaysRequested = daysRequested;
         entity.Status = LeaveStatus.Pending;
         entity.CreatedAt = DateTime.UtcNow;
         entity.UpdatedAt = DateTime.UtcNow;

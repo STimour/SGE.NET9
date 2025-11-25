@@ -44,12 +44,12 @@ public class DepartmentService(IDepartmentRepository departmentRepository, IMapp
     public async Task<DepartmentDto> CreateAsync(DepartmentCreateDto dto, CancellationToken cancellationToken = default)
     {
         var existingName = await departmentRepository.GetByNameAsync(dto.Name, cancellationToken);
-        
-        if (existingName != null) throw new ApplicationException("Department name already exists");
-        
+
+        if (existingName != null) throw new DuplicateDepartmentNameException(dto.Name);
+
         var existingCode = await departmentRepository.GetByCodeAsync(dto.Code, cancellationToken);
-        
-        if (existingCode != null) throw new ApplicationException("Department code already exists");
+
+        if (existingCode != null) throw new BusinessRuleException("Department code already exists", "DEPARTMENT_CODE_EXISTS");
         
         var entity = mapper.Map<Department>(dto);
         

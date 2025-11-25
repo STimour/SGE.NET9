@@ -3,6 +3,7 @@ using SGE.Application.DTO.Employee;
 using SGE.Application.Interfaces.IRepositories;
 using SGE.Application.Interfaces.IServices;
 using SGE.Core.Entities;
+using SGE.Core.Exceptions;
 
 namespace SGE.Application.Services;
 
@@ -85,11 +86,11 @@ public class EmployeeService(IEmployeeRepository employeeRepository,
         if (dto.DepartmentId.HasValue && dto.DepartmentId.Value > 0)
         {
             var department = await departmentRepository.GetByIdAsync(dto.DepartmentId.Value, cancellationToken);
-            if (department == null) throw new ApplicationException("Il n'existe aucun departement avec cet identifiant");
+            if (department == null) throw new DepartmentIdException(dto.DepartmentId.Value);
         }
 
         var existingEmployee = await employeeRepository.GetByEmailAsync(dto.Email, cancellationToken);
-        if (existingEmployee != null) throw new ApplicationException("Cet email existe déjà pour un autre employée");
+        if (existingEmployee != null) throw new InvalidEmployeeDataException("Cet email existe déjà pour un autre employé");
 
         var entity = mapper.Map<Employee>(dto);
 
@@ -117,7 +118,7 @@ public class EmployeeService(IEmployeeRepository employeeRepository,
         if (!string.IsNullOrWhiteSpace(dto.Email) && !string.Equals(dto.Email, existing.Email, StringComparison.OrdinalIgnoreCase))
         {
             var byEmail = await employeeRepository.GetByEmailAsync(dto.Email, cancellationToken);
-            if (byEmail != null && byEmail.Id != id) throw new ApplicationException("Cet email est déjà utilisé par un autre employé");
+            if (byEmail != null && byEmail.Id != id) throw new InvalidEmployeeDataException("Cet email est déjà utilisé par un autre employé");
         }
 
         // If DepartmentId provided, verify it exists (allow null to remove department)
@@ -126,7 +127,7 @@ public class EmployeeService(IEmployeeRepository employeeRepository,
             if (dto.DepartmentId.Value > 0)
             {
                 var dept = await departmentRepository.GetByIdAsync(dto.DepartmentId.Value, cancellationToken);
-                if (dept == null) throw new ApplicationException("Le département spécifié n'existe pas");
+                if (dept == null) throw new DepartmentIdException(dto.DepartmentId.Value);
                 existing.DepartmentId = dto.DepartmentId.Value;
             }
             else
