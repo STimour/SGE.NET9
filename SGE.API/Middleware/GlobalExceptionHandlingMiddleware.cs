@@ -27,7 +27,7 @@ public class GlobalExceptionHandlingMiddleware
         /// It catches exceptions thrown by downstream middleware, logs them, and provides a consistent error response to clients.
         /// </summary>
 
-        public GlobalExceptionHandlingMiddleware(RequestDelegate _next, ILogger<GlobalExceptionHandlingMiddleware> _logger)
+        public GlobalExceptionHandlingMiddleware(RequestDelegate next, ILogger<GlobalExceptionHandlingMiddleware> logger)
         {
             _next = next;
             _logger = logger;

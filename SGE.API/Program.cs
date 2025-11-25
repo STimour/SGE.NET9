@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using SGE.API.Middleware;
 using SGE.Application.Interfaces.IRepositories;
 using SGE.Application.Interfaces.IServices;
 using SGE.Application.Mapping;
@@ -38,5 +39,6 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 app.UseAuthorization();
+app.UseMiddleware<GlobalExceptionHandlingMiddleware>();
 app.MapControllers();
 app.Run();

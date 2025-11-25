@@ -10,9 +10,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3104b775-265e-4b03-84c3-9f5e734814c7" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/SGE.Core/Exception/BusinessRuleException.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.SGE/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.SGE/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SGE.Core/Exception/SgeException.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.API/Middleware/GlobalExceptionHandlingMiddleware.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SGE.API/Middleware/GlobalExceptionHandlingMiddleware.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.API/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SGE.API/Program.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
