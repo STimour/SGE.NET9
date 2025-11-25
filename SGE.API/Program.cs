@@ -20,6 +20,7 @@ builder.Services.AddScoped<IDepartmentService, DepartmentService>();
 builder.Services.AddScoped<IEmployeeRepository, EmployeeRepository>();
 builder.Services.AddScoped<IEmployeeService, EmployeeService>();
 builder.Services.AddScoped<IImportService, ImportService>();
+builder.Services.AddScoped<IAttendanceService, AttendanceService>();
 
 // Ajout mapper
 builder.Services.AddAutoMapper(cfg => { }, typeof(MappingProfile).Assembly);
