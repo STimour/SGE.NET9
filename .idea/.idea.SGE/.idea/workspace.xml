@@ -11,8 +11,6 @@
   <component name="ChangeListManager">
     <list default="true" id="3104b775-265e-4b03-84c3-9f5e734814c7" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.SGE/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.SGE/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SGE.API/Middleware/GlobalExceptionHandlingMiddleware.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SGE.API/Middleware/GlobalExceptionHandlingMiddleware.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SGE.API/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SGE.API/Program.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,7 +58,7 @@
   &quot;isMigrated&quot;: true
 }</component>
   <component name="ProblemsViewState">
-    <option name="selectedTabId" value="CurrentFile" />
+    <option name="selectedTabId" value="SWEA" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 1
@@ -77,10 +75,12 @@
   "keyToString": {
     ".NET Launch Settings Profile.SGE.API: http.executor": "Run",
     "Docker.SGE.API/Dockerfile.executor": "Run",
+    "Docker.bdd_compose.executor": "Run",
     "Docker.compose.yaml.sge.postgres: Compose Deployment.executor": "Run",
     "Docker.compose.yaml: Compose Deployment.executor": "Run",
     "Docker.toValidate.yaml: Compose Deployment.executor": "Run",
     "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "Rider.SolutionAnalysis.ShowPreview": "false",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
     "RunOnceActivity.git.unshallow": "true",
@@ -102,7 +102,7 @@
   <component name="RiderProblemsViewState">
     <option name="proportion" value="0.5422031" />
   </component>
-  <component name="RunManager" selected="Docker.compose.yaml: Compose Deployment">
+  <component name="RunManager" selected=".NET Launch Settings Profile.SGE.API: http">
     <configuration name="SGE.API: http" type="LaunchSettings" factoryName=".NET Launch Settings Profile">
       <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/SGE.API/SGE.API.csproj" />
       <option name="LAUNCH_PROFILE_TFM" value="net9.0" />
@@ -177,10 +177,20 @@
       <EXTENSION ID="com.jetbrains.rider.docker.debug" isFastModeEnabled="true" isSslEnabled="false" />
       <method v="2" />
     </configuration>
-    <configuration name="compose.yaml: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" server-name="Docker">
+    <configuration name="postgres_compose.yaml" type="docker-deploy" factoryName="dockerfile" server-name="Docker">
+      <deployment type="dockerfile">
+        <settings>
+          <option name="containerName" value="" />
+          <option name="sourceFilePath" value="postgres_compose.yaml" />
+        </settings>
+      </deployment>
+      <EXTENSION ID="com.jetbrains.rider.docker.debug" isFastModeEnabled="true" isSslEnabled="false" />
+      <method v="2" />
+    </configuration>
+    <configuration name="postgres_compose.yaml: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" server-name="Docker">
       <deployment type="docker-compose.yml">
         <settings>
-          <option name="sourceFilePath" value="compose.yaml" />
+          <option name="sourceFilePath" value="postgres_compose.yaml" />
         </settings>
       </deployment>
       <EXTENSION ID="com.jetbrains.rider.docker.debug" isFastModeEnabled="true" isSslEnabled="false" />
@@ -203,7 +213,8 @@
     <list>
       <item itemvalue=".NET Launch Settings Profile.SGE.API: http" />
       <item itemvalue=".NET Launch Settings Profile.SGE.API: https" />
-      <item itemvalue="Docker.compose.yaml: Compose Deployment" />
+      <item itemvalue="Docker.postgres_compose.yaml" />
+      <item itemvalue="Docker.postgres_compose.yaml: Compose Deployment" />
       <item itemvalue="Docker.SGE.API/Dockerfile" />
       <item itemvalue="Docker.toValidate.yaml.sge.postgres: Compose Deployment" />
       <item itemvalue="Multi-Launch.Multi-Launch: SGE" />

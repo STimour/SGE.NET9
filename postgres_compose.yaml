@@ -1,0 +1,16 @@
+services:
+  sge_postgres:
+    image: postgres:latest
+    container_name: sge_postgres
+    environment:
+      POSTGRES_DB: sgedb
+      POSTGRES_USER: sgeuser
+      POSTGRES_PASSWORD: sgepassword
+    ports:
+      - "5432:5432"
+    #    volumes:
+    #      - postgres_data:/var/lib/postgresql/data
+    
+    #volumes:
+    #  postgres_data:
+    #    driver: local
