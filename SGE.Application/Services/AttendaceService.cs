@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using SGE.Application.DTO.Attendances;
 using SGE.Application.Interfaces.IRepositories;
 using SGE.Application.Interfaces.IServices;
-using SGE.Core.Exception;
+using SGE.Core.Exceptions;
 
 namespace SGE.Application.services;
 
@@ -36,7 +36,7 @@ public class AttendanceService( IAttendanceRepository attendanceRepository,
     public async Task<AttendanceDto> ClockInAsync(ClockInOutDto clockInDto, CancellationToken cancellationToken = default)
     {
         if (!await employeeRepository.ExistsAsync(clockInDto.EmployeeId, cancellationToken)) 
-            throw new EmployeeNotFoundException($"Employee with ID {clockInDto.EmployeeId} not found");
+            throw new EmployeeNotFoundException(clockInDto.EmployeeId);
 
         var date = clockInDto.DateTime.Date;
         var time = clockInDto.DateTime.TimeOfDay;

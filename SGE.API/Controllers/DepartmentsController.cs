@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Http;
 using SGE.Application.DTO.Department;
 using SGE.Application.DTO.Import;
 using SGE.Application.Interfaces.IServices;
+using SGE.Core.Exceptions;
 
 namespace SGE.API.Controllers;
 
@@ -67,6 +68,8 @@ public class DepartmentsController(IDepartmentService departmentService, IImport
     [HttpPut("{id:int}")]
     public async Task<IActionResult> Update(int id, DepartmentUpdateDto dto, CancellationToken cancellationToken)
     {
+        if (!await IsDepartmentExists(id)) throw new DepartmentIdException(id);
+        
         var ok = await departmentService.UpdateAsync(id, dto, cancellationToken);
         
         if (!ok) return NotFound();
@@ -83,6 +86,9 @@ public class DepartmentsController(IDepartmentService departmentService, IImport
     [HttpDelete("{id:int}")]
     public async Task<IActionResult> Delete(int id, CancellationToken cancellationToken)
     {
+     
+        if (!await IsDepartmentExists(id)) throw new DepartmentIdException(id);
+        
         var ok = await departmentService.DeleteAsync(id, cancellationToken);
         
         if (!ok) return NotFound();
@@ -104,4 +110,17 @@ public class DepartmentsController(IDepartmentService departmentService, IImport
         var result = await importService.ImportDepartmentsAsync(stream, file.FileName, behavior, cancellationToken);
         return Ok(result);
     }
+    
+    public async Task<bool> IsDepartmentExists(int id)
+    {
+        var department = await departmentService.GetByIdAsync(id);
+
+        if (department == null)
+        {
+            return false;
+        }
+
+        return true;
+    }
+
 }

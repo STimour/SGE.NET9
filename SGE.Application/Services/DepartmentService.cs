@@ -4,7 +4,7 @@ using SGE.Application.DTO.Department;
 using SGE.Application.Interfaces.IRepositories;
 using SGE.Application.Interfaces.IServices;
 using SGE.Core.Entities;
-using SGE.Core.Exception;
+using SGE.Core.Exceptions;
 
 namespace SGE.Application.Services;
 

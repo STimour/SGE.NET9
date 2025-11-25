@@ -1,5 +1,5 @@
 using System.Text.Json;
-using SGE.Core.Exception;
+using SGE.Core.Exceptions;
 using SGE.Core.Models;
 
 namespace SGE.API.Middleware;

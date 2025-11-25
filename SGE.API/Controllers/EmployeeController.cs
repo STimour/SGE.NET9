@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Http;
 using SGE.Application.DTO.Employee;
 using SGE.Application.DTO.Import;
 using SGE.Application.Interfaces.IServices;
+using SGE.Core.Exceptions;
 
 namespace SGE.API.Controllers;
 
@@ -77,6 +78,7 @@ public class EmployeeController(IEmployeeService  employeeService, IImportServic
     [HttpGet("by-department/{departmentId:int}")]
     public async Task<ActionResult<IEnumerable<EmployeeDto>>> GetByDepartment(int departmentId, CancellationToken cancellationToken)
     {
+        
         var employees = await employeeService.GetByDepartmentAsync(departmentId, cancellationToken);
         
         return Ok(employees);
@@ -95,6 +97,7 @@ public class EmployeeController(IEmployeeService  employeeService, IImportServic
     [HttpPut("{id:int}")]
     public async Task<IActionResult> Update(int id, EmployeeUpdateDto dto, CancellationToken cancellationToken)
     {
+        if (!await IsEmployeeExists(id)) throw new EmployeeNotFoundException(id);
         var ok = await employeeService.UpdateAsync(id, dto, cancellationToken);
         if (!ok) return NotFound();
         return NoContent();
@@ -112,6 +115,8 @@ public class EmployeeController(IEmployeeService  employeeService, IImportServic
     [HttpDelete("{id:int}")]
     public async Task<IActionResult> Delete(int id, CancellationToken cancellationToken)
     {
+        if (!await IsEmployeeExists(id)) throw new EmployeeNotFoundException(id);
+        
         var ok = await employeeService.DeleteAsync(id, cancellationToken);
         if (!ok) return NotFound();
         return NoContent();
@@ -140,5 +145,18 @@ public class EmployeeController(IEmployeeService  employeeService, IImportServic
         await using var stream = file.OpenReadStream();
         var result = await importService.ImportEmployeesAsync(stream, file.FileName, behavior, cancellationToken);
         return Ok(result);
+    }
+    
+    
+    private async Task<bool> IsEmployeeExists(int id)
+    {
+        var employee = await employeeService.GetByIdAsync(id);
+
+        if (employee == null)
+        {
+            return false;
+        }
+
+        return true;
     }
 }
