@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using SGE.Application.DTO.Attendances;
 using SGE.Application.Interfaces.IRepositories;
 using SGE.Application.Interfaces.IServices;
+using SGE.Core.Exception;
 
 namespace SGE.Application.services;
 
@@ -35,7 +36,7 @@ public class AttendanceService( IAttendanceRepository attendanceRepository,
     public async Task<AttendanceDto> ClockInAsync(ClockInOutDto clockInDto, CancellationToken cancellationToken = default)
     {
         if (!await employeeRepository.ExistsAsync(clockInDto.EmployeeId, cancellationToken)) 
-            throw new KeyNotFoundException($"Employee with ID {clockInDto.EmployeeId} not found");
+            throw new EmployeeNotFoundException($"Employee with ID {clockInDto.EmployeeId} not found");
 
         var date = clockInDto.DateTime.Date;
         var time = clockInDto.DateTime.TimeOfDay;
@@ -45,22 +46,24 @@ public class AttendanceService( IAttendanceRepository attendanceRepository,
         // Mettre à jour l'entrée existante
         var existing = (await attendanceRepository.FindAsync(a => a.EmployeeId == clockInDto.EmployeeId && a.Date == date, cancellationToken)).ToList();
 
-        if (existing.Count > 1)
-            throw new InvalidOperationException("Multiple attendance records found for the same employee and date");
-
-        if (existing.Count == 1)
+        switch (existing.Count)
         {
-            var attendance = existing.First();
-            if (attendance.ClockIn.HasValue)
-                throw new InvalidOperationException("Employee has already clocked in today");
+            case > 1:
+                throw new ValidationException("Multiple attendance records found for the same employee and date");
+            case 1:
+            {
+                var attendance = existing.First();
+                if (attendance.ClockIn.HasValue)
+                    throw new ValidationException("Employee has already clocked in today");
 
-            attendance.ClockIn = time;
-            attendance.Notes += (string.IsNullOrEmpty(attendance.Notes) ? "" : "; ") + clockInDto.Notes;
-            attendance.UpdatedAt = DateTime.UtcNow;
+                attendance.ClockIn = time;
+                attendance.Notes += (string.IsNullOrEmpty(attendance.Notes) ? "" : "; ") + clockInDto.Notes;
+                attendance.UpdatedAt = DateTime.UtcNow;
 
-            await attendanceRepository.UpdateAsync(attendance, cancellationToken);
+                await attendanceRepository.UpdateAsync(attendance, cancellationToken);
 
-            return mapper.Map<AttendanceDto>(attendance);
+                return mapper.Map<AttendanceDto>(attendance);
+            }
         }
 
         var entity = new Attendance
