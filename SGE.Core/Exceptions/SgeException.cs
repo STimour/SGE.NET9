@@ -1,4 +1,4 @@
-namespace SGE.Core.Exception;
+namespace SGE.Core.Exceptions;
 
 public class SgeException : System.Exception
 {

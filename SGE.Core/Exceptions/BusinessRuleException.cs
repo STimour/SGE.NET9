@@ -1,4 +1,4 @@
-namespace SGE.Core.Exception;
+namespace SGE.Core.Exceptions;
 
 /// <summary>
 /// Represents an exception that is thrown when a business rule is  violated within the system.
