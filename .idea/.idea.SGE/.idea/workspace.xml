@@ -10,7 +10,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3104b775-265e-4b03-84c3-9f5e734814c7" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.github/workflows/api-tests.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/api-tests.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SGE.Core/Exception/BusinessRuleException.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.SGE/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.SGE/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.Core/Exception/SgeException.cs" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,6 +28,7 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/SGE.API/Controllers/DepartmentsController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/SGE.API/Controllers/EmployeeController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/SGE.API/Middleware/GlobalExceptionHandlingMiddleware.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/SGE.Application/DTO/Department/DepartmentCreateDto.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/SGE.Application/DTO/Department/DepartmentDto.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/SGE.Application/DTO/Department/DepartmentUpdateDto.cs" root0="FORCE_HIGHLIGHTING" />
@@ -44,6 +47,8 @@
     <setting file="file://$PROJECT_DIR$/SGE.Core/Entities/LeaveRequest.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/SGE.Core/Enums/LeaveStatus.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/SGE.Core/Enums/LeaveType.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/SGE.Core/Exception/SgeException.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/SGE.Core/Models/ErrorResponse.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/SGE.Infrastructure/Data/ApplicationDbContext.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/SGE.Infrastructure/Repositories/DepartmentRepository.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/SGE.Infrastructure/Repositories/EmployeeRepository.cs" root0="FORCE_HIGHLIGHTING" />
