@@ -97,7 +97,7 @@ public class AttendanceService( IAttendanceRepository attendanceRepository,
     public async Task<AttendanceDto> ClockOutAsync(ClockInOutDto clockOutDto, CancellationToken cancellationToken = default)
     {
         // Vérifier que l'employé existe
-        if (!await employeeRepository.ExistsAsync(clockOutDto.EmployeeId, cancellationToken)) throw new KeyNotFoundException($"Employee with ID {clockOutDto.EmployeeId} not found");
+        if (!await employeeRepository.ExistsAsync(clockOutDto.EmployeeId, cancellationToken)) throw new EmployeeNotFoundException(clockOutDto.EmployeeId);
 
         var date = clockOutDto.DateTime.Date;
         var time = clockOutDto.DateTime.TimeOfDay;
@@ -141,7 +141,7 @@ public class AttendanceService( IAttendanceRepository attendanceRepository,
         if (createAttendanceDto == null) throw new ArgumentNullException(nameof(createAttendanceDto));
 
         if (!await employeeRepository.ExistsAsync(createAttendanceDto.EmployeeId, cancellationToken))
-            throw new KeyNotFoundException($"Employee with ID {createAttendanceDto.EmployeeId} not found");
+            throw new EmployeeNotFoundException(createAttendanceDto.EmployeeId);
 
         var date = createAttendanceDto.Date.Date;
         var exists = (await attendanceRepository.FindAsync(a => a.EmployeeId == createAttendanceDto.EmployeeId && a.Date == date, cancellationToken)).Any();
@@ -188,7 +188,7 @@ public class AttendanceService( IAttendanceRepository attendanceRepository,
     GetAttendancesByEmployeeAsync(int employeeId, DateTime? startDate = null, DateTime? endDate = null, CancellationToken cancellationToken = default)
     {
         if (!await employeeRepository.ExistsAsync(employeeId, cancellationToken))
-            throw new KeyNotFoundException($"Employee with ID {employeeId} not found");
+            throw new EmployeeNotFoundException(employeeId);
 
         var attendances = (await attendanceRepository.GetByEmployeeAsync(employeeId, cancellationToken)).AsEnumerable();
 
@@ -225,7 +225,7 @@ public class AttendanceService( IAttendanceRepository attendanceRepository,
     public async Task<AttendanceDto?> GetTodayAttendanceAsync(int employeeId, CancellationToken cancellationToken = default)
     {
         if (!await employeeRepository.ExistsAsync(employeeId, cancellationToken))
-            throw new KeyNotFoundException($"Employee with ID {employeeId} not found");
+            throw new EmployeeNotFoundException(employeeId);
 
         var today = DateTime.Today;
         var list = (await attendanceRepository.FindAsync(a => a.EmployeeId == employeeId && a.Date == today, cancellationToken)).ToList();
