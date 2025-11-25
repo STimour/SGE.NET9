@@ -1,6 +1,7 @@
 using AutoMapper;
 using SGE.Application.DTO.Department;
 using SGE.Application.DTO.Employee;
+using SGE.Application.DTOs.LeaveRequests;
 using SGE.Core.Entities;
 
 namespace SGE.Application.Mapping;
@@ -22,6 +23,19 @@ public class MappingProfile : Profile
         CreateMap<EmployeeUpdateDto, Employee>()
             .ForAllMembers(opts => opts.Condition((src, dest, srcMember)
                 => srcMember != null)); // ignore nulls
+
+        // =======================
+        // Attendance Mapping (already added elsewhere)
+        // =======================
+
+        // =======================
+        // LeaveRequest Mapping
+        // =======================
+        CreateMap<LeaveRequestCreateDto, LeaveRequest>();
+        CreateMap<LeaveRequest, LeaveRequestDto>()
+            .ForMember(dest => dest.EmployeeName, opt => opt.MapFrom(src => $"{src.Employee.FirstName} {src.Employee.LastName}"))
+            .ForMember(dest => dest.LeaveTypeName, opt => opt.MapFrom(src => src.LeaveType.ToString()))
+            .ForMember(dest => dest.StatusName, opt => opt.MapFrom(src => src.Status.ToString()));
 
         // =======================
         // Department Mapping

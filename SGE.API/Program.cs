@@ -2,6 +2,8 @@ using Microsoft.EntityFrameworkCore;
 using SGE.API.Middleware;
 using SGE.Application.Interfaces.IRepositories;
 using SGE.Application.Interfaces.IServices;
+using SGE.Application.Interfaces.Repositories;
+using SGE.Application.Interfaces.Services;
 using SGE.Application.Mapping;
 using SGE.Application.Services;
 using SGE.Infrastructure.Data;
@@ -21,6 +23,8 @@ builder.Services.AddScoped<IEmployeeRepository, EmployeeRepository>();
 builder.Services.AddScoped<IEmployeeService, EmployeeService>();
 builder.Services.AddScoped<IImportService, ImportService>();
 builder.Services.AddScoped<IAttendanceService, AttendanceService>();
+builder.Services.AddScoped<ILeaveRequestRepository, LeaveRequestRepository>();
+builder.Services.AddScoped<ILeaveRequestService, LeaveRequestService>();
 
 // Ajout mapper
 builder.Services.AddAutoMapper(cfg => { }, typeof(MappingProfile).Assembly);
