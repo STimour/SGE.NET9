@@ -23,7 +23,7 @@ public class SgeException : System.Exception
 		StatusCode = statusCode;
 	}
 
-	public SgeException(string message, Exception innerException, string errorCode = "SGE_ERROR", int statusCode = 500)
+	public SgeException(string message, System.Exception innerException, string errorCode = "SGE_ERROR", int statusCode = 500)
 		: base(message, innerException)
 	{
 		ErrorCode = errorCode;
