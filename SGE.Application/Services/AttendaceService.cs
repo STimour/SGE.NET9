@@ -49,12 +49,12 @@ public class AttendanceService( IAttendanceRepository attendanceRepository,
         switch (existing.Count)
         {
             case > 1:
-                throw new ValidationException("Multiple attendance records found for the same employee and date");
+                throw new ValidationException($"{existing}", "Multiple attendance records found for the same employee and date" );
             case 1:
             {
                 var attendance = existing.First();
                 if (attendance.ClockIn.HasValue)
-                    throw new ValidationException("Employee has already clocked in today");
+                    throw new ValidationException($"{attendance}","Employee has already clocked in today");
 
                 attendance.ClockIn = time;
                 attendance.Notes += (string.IsNullOrEmpty(attendance.Notes) ? "" : "; ") + clockInDto.Notes;

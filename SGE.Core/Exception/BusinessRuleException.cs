@@ -119,15 +119,10 @@ public InvalidLeaveStatusTransitionException(string currentStatus, string newSta
 /// The default error code for this exception is "VALIDATION_ERROR" , and it corresponds to the HTTP
 /// status code 400 (Bad Request).
 /// </remarks>
-public class ValidationException : SgeException
+public class ValidationException(Dictionary<string, List<string>> errors)
+    : SgeException("Une ou plusieurs erreurs de validation sont survenues.", "VALIDATION_ERROR", 400)
 {
-    public Dictionary<string, List<string>> Errors { get; }
-
-    public ValidationException(string errors)
-        : base("Une ou plusieurs erreurs de validation sont survenues.", "VALIDATION_ERROR", 400)
-    {
-        Errors = errors;
-    }
+    public Dictionary<string, List<string>> Errors { get; } = errors;
 
     public ValidationException(string propertyName, string errorMessage)
         : this(new Dictionary<string, List<string>> { { propertyName, new List<string> { errorMessage } } })
@@ -196,6 +191,23 @@ public class DuplicateDepartmentNameException : SgeException
         : base($"Le nom du département '{departmentName}' existe déjà.", "DEPARTMENT_NAME_EXISTS", 409)
     { }
 }
+
+/// <summary>
+/// Represents an exception that is thrown when an attempt is made to create or register a department
+/// with a name that already exists within the system.
+/// </summary>
+/// <remarks>
+/// This exception is intended to signal violations of unique constraints with respect to department names.
+/// It includes a message specifying the conflicting department name, an error code of "DEPARTMENT_NAME_EXISTS"
+/// and an associated HTTP status code of 409 (Conflict).
+/// </remarks>
+public class DepartmentIdException : SgeException
+{
+    public DepartmentIdException(int id) 
+        : base($"Le département '{id}' n'existe pas.", "DEPARTMENT_NOT_EXISTS", 404)
+    { }
+}
+
 /// <summary>
 /// Represents an exception that is thrown when invalid data is provided for an employee within the system.
 /// </summary>

@@ -4,6 +4,7 @@ using SGE.Application.DTO.Department;
 using SGE.Application.Interfaces.IRepositories;
 using SGE.Application.Interfaces.IServices;
 using SGE.Core.Entities;
+using SGE.Core.Exception;
 
 namespace SGE.Application.Services;
 
@@ -29,7 +30,8 @@ public class DepartmentService(IDepartmentRepository departmentRepository, IMapp
     public async Task<DepartmentDto?> GetByIdAsync(int id, CancellationToken cancellationToken = default)
     {
         var dept = await departmentRepository.GetByIdAsync(id, cancellationToken);
-        return dept == null ? null : mapper.Map<DepartmentDto>(dept);
+        return dept == null ? throw new DepartmentIdException(id)
+            : mapper.Map<DepartmentDto>(dept);
     }
 
     /// <summary>

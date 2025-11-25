@@ -12,6 +12,7 @@
     <list default="true" id="3104b775-265e-4b03-84c3-9f5e734814c7" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.SGE/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.SGE/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/SGE.Application/Services/AttendaceService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SGE.Application/Services/AttendaceService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGE.Application/Services/DepartmentService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SGE.Application/Services/DepartmentService.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/SGE.Core/Exception/BusinessRuleException.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SGE.Core/Exception/BusinessRuleException.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/SGE.Core/bin/Debug/net9.0/SGE.Core.dll" beforeDir="false" afterPath="$PROJECT_DIR$/SGE.Core/bin/Debug/net9.0/SGE.Core.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/SGE.Core/bin/Debug/net9.0/SGE.Core.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/SGE.Core/bin/Debug/net9.0/SGE.Core.pdb" afterDir="false" />
@@ -286,6 +287,58 @@
           <properties exception="System.Threading.ThreadAbortException" breakIfHandledByOtherCode="false" displayValue="System.Threading.ThreadAbortException" />
           <option name="timeStamp" value="3" />
         </breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/SGE.API/Middleware/GlobalExceptionHandlingMiddleware.cs</url>
+          <line>67</line>
+          <properties documentPath="$PROJECT_DIR$/SGE.API/Middleware/GlobalExceptionHandlingMiddleware.cs" containingFunctionPresentation="">
+            <startOffsets>
+              <option value="3426" />
+            </startOffsets>
+            <endOffsets>
+              <option value="3494" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/SGE.Application/Services/DepartmentService.cs</url>
+          <line>31</line>
+          <properties documentPath="$PROJECT_DIR$/SGE.Application/Services/DepartmentService.cs" containingFunctionPresentation="Method 'GetByIdAsync'">
+            <startOffsets>
+              <option value="1367" />
+            </startOffsets>
+            <endOffsets>
+              <option value="1441" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/SGE.API/Controllers/DepartmentsController.cs</url>
+          <line>54</line>
+          <properties documentPath="$PROJECT_DIR$/SGE.API/Controllers/DepartmentsController.cs" containingFunctionPresentation="Method 'Create'">
+            <startOffsets>
+              <option value="2461" />
+            </startOffsets>
+            <endOffsets>
+              <option value="2535" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="7" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/SGE.API/Middleware/GlobalExceptionHandlingMiddleware.cs</url>
+          <line>45</line>
+          <properties documentPath="$PROJECT_DIR$/SGE.API/Middleware/GlobalExceptionHandlingMiddleware.cs" containingFunctionPresentation="Method 'InvokeAsync'">
+            <startOffsets>
+              <option value="2109" />
+            </startOffsets>
+            <endOffsets>
+              <option value="2130" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="8" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>
